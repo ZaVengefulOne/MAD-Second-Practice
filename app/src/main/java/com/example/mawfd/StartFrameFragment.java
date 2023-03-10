@@ -3,9 +3,7 @@ package com.example.mawfd;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,20 +12,20 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.example.mawfd.databinding.FragmentHomeBinding;
-import com.example.mawfd.databinding.FragmentMenuBinding;
+
+import com.example.mawfd.databinding.FragmentStartframeBinding;
 
 
     public class StartFrameFragment extends Fragment {
         private static final String TAG = "mafwd";
         public static final String KEY = "key";
-        public StartFrameFragment() {
-            super(R.layout.fragment_startframe);
-            StartFrameFragment startFrameFragment = new StartFrameFragment();
-            Bundle bundle = new Bundle();
-            bundle.putString(KEY,"123");
-            startFrameFragment.setArguments(bundle);
-        }
+//        public StartFrameFragment() {
+//            super(R.layout.fragment_startframe);
+//            StartFrameFragment startFrameFragment = new StartFrameFragment();
+//            Bundle bundle = new Bundle();
+//            bundle.putString(KEY,"123");
+//            startFrameFragment.setArguments(bundle);
+//        }
 
         public void onClick(View v) {
             Bundle result = new Bundle();
@@ -35,7 +33,7 @@ import com.example.mawfd.databinding.FragmentMenuBinding;
             getParentFragmentManager().setFragmentResult("requestKey", result);
         }
 
-        private FragmentStartFrameBinding binding;
+        private FragmentStartframeBinding binding;
         @Override
         public void onAttach(@NonNull Context context) {
             Log.d(TAG, "onAttach");
@@ -59,7 +57,7 @@ import com.example.mawfd.databinding.FragmentMenuBinding;
             Log.d(TAG, "Fragment Lifecycle = " + getLifecycle().getCurrentState().toString());
             Toast.makeText(getContext(), "onCreateView", Toast.LENGTH_SHORT).show();
 
-            binding = FragmentHomeBinding.inflate(getLayoutInflater());
+            binding = FragmentStartframeBinding.inflate(getLayoutInflater());
             return binding.getRoot();
         }
 
@@ -73,7 +71,6 @@ import com.example.mawfd.databinding.FragmentMenuBinding;
 
             super.onViewCreated(view, savedInstanceState);
         }
-
         @Override
         public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
 
@@ -84,7 +81,6 @@ import com.example.mawfd.databinding.FragmentMenuBinding;
 
             super.onViewStateRestored(savedInstanceState);
         }
-
         @Override
         public void onStart() {
             Log.d(TAG, "OnStart");
@@ -93,7 +89,6 @@ import com.example.mawfd.databinding.FragmentMenuBinding;
             Toast.makeText(getContext(), "onStart", Toast.LENGTH_SHORT).show();
             super.onStart();
         }
-
         @Override
         public void onResume() {
 
@@ -104,7 +99,6 @@ import com.example.mawfd.databinding.FragmentMenuBinding;
 
             super.onResume();
         }
-
         @Override
         public void onPause() {
 
@@ -115,7 +109,6 @@ import com.example.mawfd.databinding.FragmentMenuBinding;
 
             super.onPause();
         }
-
         @Override
         public void onStop() {
 
@@ -126,7 +119,6 @@ import com.example.mawfd.databinding.FragmentMenuBinding;
 
             super.onStop();
         }
-
         @Override
         public void onSaveInstanceState(@NonNull Bundle outState) {
 
@@ -137,7 +129,6 @@ import com.example.mawfd.databinding.FragmentMenuBinding;
 
             super.onSaveInstanceState(outState);
         }
-
         @Override
         public void onDestroyView() {
 
@@ -148,7 +139,6 @@ import com.example.mawfd.databinding.FragmentMenuBinding;
 
             super.onDestroyView();
         }
-
         @Override
         public void onDestroy() {
             Log.d(TAG, "OnDestroy");
@@ -158,7 +148,6 @@ import com.example.mawfd.databinding.FragmentMenuBinding;
 
             super.onDestroy();
         }
-
         @Override
         public void onDetach() {
             Log.d(TAG, "onDetach");
