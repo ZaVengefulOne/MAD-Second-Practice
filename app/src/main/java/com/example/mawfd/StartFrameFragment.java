@@ -19,13 +19,13 @@ import com.example.mawfd.databinding.FragmentStartframeBinding;
     public class StartFrameFragment extends Fragment {
         private static final String TAG = "mafwd";
         public static final String KEY = "key";
-//        public StartFrameFragment() {
-//            super(R.layout.fragment_startframe);
-//            StartFrameFragment startFrameFragment = new StartFrameFragment();
-//            Bundle bundle = new Bundle();
-//            bundle.putString(KEY,"123");
-//            startFrameFragment.setArguments(bundle);
-//        }
+        public StartFrameFragment() {
+            super(R.layout.fragment_startframe);
+            StartFrameFragment startFrameFragment = new StartFrameFragment();
+            Bundle bundle = new Bundle();
+            bundle.putString(KEY,"123");
+            startFrameFragment.setArguments(bundle);
+        }
 
         public void onClick(View v) {
             Bundle result = new Bundle();
