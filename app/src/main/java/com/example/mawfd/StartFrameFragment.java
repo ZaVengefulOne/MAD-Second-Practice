@@ -17,23 +17,56 @@ import com.example.mawfd.databinding.FragmentStartframeBinding;
 
 
     public class StartFrameFragment extends Fragment {
+        private FragmentStartframeBinding binding;
         private static final String TAG = "mafwd";
         public static final String KEY = "key";
         public StartFrameFragment() {
             super(R.layout.fragment_startframe);
-            StartFrameFragment startFrameFragment = new StartFrameFragment();
-            Bundle bundle = new Bundle();
-            bundle.putString(KEY,"123");
-            startFrameFragment.setArguments(bundle);
         }
 
+        @Override
+        public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+            Log.d(TAG, "OnCreateView");
+            Log.d(TAG, "View Lifecycle = " + getViewLifecycleOwner().getLifecycle().getCurrentState().toString());
+            Log.d(TAG, "Fragment Lifecycle = " + getLifecycle().getCurrentState().toString());
+            Toast.makeText(getContext(), "onCreateView", Toast.LENGTH_SHORT).show();
+            binding = FragmentStartframeBinding.inflate(getLayoutInflater());
+            return binding.getRoot();
+        }
+
+        @Override
+        public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+            Log.d(TAG, "OnViewCreated");
+            Log.d(TAG, "View Lifecycle = " + getViewLifecycleOwner().getLifecycle().getCurrentState().toString());
+            Log.d(TAG, "Fragment Lifecycle = " + getLifecycle().getCurrentState().toString());
+            Toast.makeText(getContext(), "onViewCreated", Toast.LENGTH_SHORT).show();
+            super.onViewCreated(view, savedInstanceState);
+            binding.button1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    requireActivity().getSupportFragmentManager().beginTransaction()
+                            .addToBackStack(null)
+                            .replace(R.id.fragment_container, new SignInFragment())
+                            .commit();
+                }
+            });
+            binding.button2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    requireActivity().getSupportFragmentManager().beginTransaction()
+                            .addToBackStack(null)
+                            .replace(R.id.fragment_container, new TestFragment())
+                            .commit();
+                }
+            });
+        }
         public void onClick(View v) {
             Bundle result = new Bundle();
             result.putString("bundleKey", "result");
             getParentFragmentManager().setFragmentResult("requestKey", result);
         }
 
-        private FragmentStartframeBinding binding;
+
         @Override
         public void onAttach(@NonNull Context context) {
             Log.d(TAG, "onAttach");
@@ -50,27 +83,9 @@ import com.example.mawfd.databinding.FragmentStartframeBinding;
             super.onCreate(savedInstanceState);
         }
 
-        @Override
-        public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-            Log.d(TAG, "OnCreateView");
-            Log.d(TAG, "View Lifecycle = " + getViewLifecycleOwner().getLifecycle().getCurrentState().toString());
-            Log.d(TAG, "Fragment Lifecycle = " + getLifecycle().getCurrentState().toString());
-            Toast.makeText(getContext(), "onCreateView", Toast.LENGTH_SHORT).show();
 
-            binding = FragmentStartframeBinding.inflate(getLayoutInflater());
-            return binding.getRoot();
-        }
 
-        @Override
-        public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
-            Log.d(TAG, "OnViewCreated");
-            Log.d(TAG, "View Lifecycle = " + getViewLifecycleOwner().getLifecycle().getCurrentState().toString());
-            Log.d(TAG, "Fragment Lifecycle = " + getLifecycle().getCurrentState().toString());
-            Toast.makeText(getContext(), "onViewCreated", Toast.LENGTH_SHORT).show();
-
-            super.onViewCreated(view, savedInstanceState);
-        }
         @Override
         public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
 
