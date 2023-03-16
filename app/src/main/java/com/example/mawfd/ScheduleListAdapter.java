@@ -19,7 +19,6 @@ public class ScheduleListAdapter extends ArrayAdapter<ScheduleListItem> {
     private LayoutInflater inflater;
     private int layout;
     private List<ScheduleListItem> items;
-
     public ScheduleListAdapter(@NonNull Context context, int resource, @NonNull List<ScheduleListItem> objects)
     {
         super(context, resource, objects);
@@ -27,7 +26,6 @@ public class ScheduleListAdapter extends ArrayAdapter<ScheduleListItem> {
         this.layout = resource;
         this.inflater = LayoutInflater.from(context);
     }
-
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -35,7 +33,7 @@ public class ScheduleListAdapter extends ArrayAdapter<ScheduleListItem> {
         TextView textView = view.findViewById(R.id.doctorProfile);
         ImageView imageView = view.findViewById(R.id.doctorLogo);
         ScheduleListItem item = items.get(position);
-        textView.setText(item.getCategoryTitle());
+        textView.setText(item.getSpecialityName());
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -43,7 +41,6 @@ public class ScheduleListAdapter extends ArrayAdapter<ScheduleListItem> {
                 Log.d("listView", "Profile " + (position + 1));
             }
         });
-
         return view;
     }
 }

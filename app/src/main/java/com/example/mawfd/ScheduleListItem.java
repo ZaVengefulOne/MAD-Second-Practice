@@ -4,16 +4,16 @@ public class ScheduleListItem {
     private int resource;
     private String specialityName;
 
-    public ScheduleListItem(int resource, String categoryTitle) {
+    public ScheduleListItem(int resource, String specialityName) {
         this.resource = resource;
-        this.specialityName = categoryTitle;
+        this.specialityName = specialityName;
     }
 
     public int getResource() {
         return resource;
     }
 
-    public String getCategoryTitle() {
+    public String getSpecialityName() {
         return specialityName;
     }
 }

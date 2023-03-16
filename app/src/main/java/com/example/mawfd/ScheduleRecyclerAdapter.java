@@ -14,10 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 public class ScheduleRecyclerAdapter extends RecyclerView.Adapter<ScheduleRecyclerAdapter.ViewHolder> {
-
     private final LayoutInflater inflater;
     private final List<ScheduleRecyclerItem> items;
-
     public ScheduleRecyclerAdapter(Context context, List<ScheduleRecyclerItem> items){
         this.inflater = LayoutInflater.from(context);
         this.items = items;
@@ -41,13 +39,10 @@ public class ScheduleRecyclerAdapter extends RecyclerView.Adapter<ScheduleRecycl
             }
         });
     }
-
-
     @Override
     public int getItemCount() {
         return items.size();
     }
-
     public static class ViewHolder extends RecyclerView.ViewHolder {
         final TextView textView;
         final ImageView imageView;
@@ -57,5 +52,4 @@ public class ScheduleRecyclerAdapter extends RecyclerView.Adapter<ScheduleRecycl
             imageView = view.findViewById(R.id.doctorLogo);
         }
     }
-
 }

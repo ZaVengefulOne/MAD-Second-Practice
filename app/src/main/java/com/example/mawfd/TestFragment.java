@@ -41,7 +41,7 @@ public class TestFragment extends Fragment {
         }
         ScheduleRecyclerAdapter adapter = new ScheduleRecyclerAdapter(getContext(), listItems);
         binding.RecyclerView.setAdapter(adapter);
-
+        adapter.notifyDataSetChanged();
         binding.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
