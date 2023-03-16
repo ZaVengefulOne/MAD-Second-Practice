@@ -10,6 +10,10 @@ import androidx.fragment.app.Fragment;
 
 
 import com.example.mawfd.databinding.FragmentSigninBinding;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class SignInFragment extends Fragment {
     private static final String TAG = "mafwd";
     public static final String KEY = "key";
@@ -28,6 +32,13 @@ public class SignInFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        List<ScheduleListItem> listItems = new ArrayList<>();
+        String[] doctorProfiles = new String[]{"Терапевт", "Отоларинголог", "Педиатр"};
+        for (int i = 0; i < 200; i++){
+            listItems.add(new ScheduleListItem(R.drawable.medical_59_icon_icons_com_73933, doctorProfiles[(int) (Math.random() * doctorProfiles.length)]));
+        }
+        ScheduleListAdapter adapter = new ScheduleListAdapter(getContext(), R.layout.item_schedule_list, listItems);
+        binding.ProfilesList.setAdapter(adapter);
         binding.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -9,8 +9,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.mawfd.databinding.FragmentSigninBinding;
 import com.example.mawfd.databinding.FragmentTestBinding;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class TestFragment extends Fragment {
     private FragmentTestBinding binding;
@@ -30,6 +32,13 @@ public class TestFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        List<ScheduleRecyclerItem> listItems = new ArrayList<>();
+        String[] doctorProfiles = new String[]{"Терапевт", "Отоларинголог", "Педиатр"};
+        for (int i = 0; i < 200; i++) {
+            listItems.add(new ScheduleRecyclerItem(R.drawable.medical_59_icon_icons_com_73933, doctorProfiles[(int) (Math.random() * doctorProfiles.length)]));
+        }
+        ScheduleRecyclerAdapter adapter = new ScheduleRecyclerAdapter(getContext(), listItems);
+        binding.RecyclerView.setAdapter(adapter);
         binding.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

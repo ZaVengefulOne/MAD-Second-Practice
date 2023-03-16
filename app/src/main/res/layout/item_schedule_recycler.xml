@@ -7,7 +7,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <ImageView
-        android:id="@+id/categoryLogo"
+        android:id="@+id/doctorLogo"
         android:layout_width="96dp"
         android:layout_height="96dp"
         android:layout_marginTop="8dp"
@@ -17,7 +17,7 @@
         tools:src="@drawable/medical_59_icon_icons_com_73933" />
 
     <TextView
-        android:id="@+id/categoryTitle"
+        android:id="@+id/doctorProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
@@ -28,7 +28,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/categoryLogo"
-        tools:text="Терапевт" />
+        app:layout_constraintTop_toBottomOf="@+id/doctorLogo"
+        tools:text="Врач" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
