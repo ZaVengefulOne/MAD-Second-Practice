@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mawfd.databinding.FragmentTestBinding;
 import java.util.ArrayList;
@@ -39,6 +41,7 @@ public class TestFragment extends Fragment {
         }
         ScheduleRecyclerAdapter adapter = new ScheduleRecyclerAdapter(getContext(), listItems);
         binding.RecyclerView.setAdapter(adapter);
+
         binding.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

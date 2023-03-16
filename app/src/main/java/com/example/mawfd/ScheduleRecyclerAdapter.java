@@ -1,7 +1,6 @@
 package com.example.mawfd;
 
 import android.content.Context;
-import android.media.Image;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -58,4 +57,5 @@ public class ScheduleRecyclerAdapter extends RecyclerView.Adapter<ScheduleRecycl
             imageView = view.findViewById(R.id.doctorLogo);
         }
     }
+
 }
