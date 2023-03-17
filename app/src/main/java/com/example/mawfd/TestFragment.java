@@ -4,10 +4,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -31,9 +33,14 @@ public class TestFragment extends Fragment {
         return binding.getRoot();
     }
 
+    private void pars(){
+        Bundle bundle = this.getArguments();
+        Toast.makeText(getContext(), "Bundle recieved!", Toast.LENGTH_LONG).show();
+    }
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        pars();
         List<ScheduleRecyclerItem> listItems = new ArrayList<>();
         String[] doctorProfiles = new String[]{"Терапевт", "Отоларинголог", "Педиатр"};
         for (int i = 0; i < 200; i++) {
@@ -45,10 +52,11 @@ public class TestFragment extends Fragment {
         binding.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                requireActivity().getSupportFragmentManager().beginTransaction()
-                        .addToBackStack(null)
-                        .replace(R.id.fragment_container, new StartFrameFragment())
-                        .commit();
+//                requireActivity().getSupportFragmentManager().beginTransaction()
+//                        .addToBackStack(null)
+//                        .replace(R.id.fragment_container, new StartFrameFragment())
+//                        .commit();
+                Navigation.findNavController(view).navigate(R.id.action_test_to_startfragment);
             }
         });
     }

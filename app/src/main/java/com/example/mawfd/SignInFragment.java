@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 
 import com.example.mawfd.databinding.FragmentSigninBinding;
@@ -42,10 +43,11 @@ public class SignInFragment extends Fragment {
         binding.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                requireActivity().getSupportFragmentManager().beginTransaction()
-                        .addToBackStack(null)
-                        .replace(R.id.fragment_container, new StartFrameFragment())
-                        .commit();
+//                requireActivity().getSupportFragmentManager().beginTransaction()
+//                        .addToBackStack(null)
+//                        .replace(R.id.fragment_container, new StartFrameFragment())
+//                        .commit();
+                Navigation.findNavController(view).navigate(R.id.action_signin_to_startfragment);
             }
         });
     }
