@@ -11,7 +11,30 @@
         tools:layout="@layout/fragment_startframe"/>
         <action
             android:id="@+id/action_startfragment_to_signinfragment"
-            app:destination="@+id/fragment_signin"
+            app:destination="@+id/signinfragment"
             />
+        <action
+            android:id="@+id/action_startfragment_to_testfragment"
+            app:destination="@+id/testfragment"/>
+    <fragment
+        android:id="@+id/signinfragment"
+        android:name="com.example.mawfd.SignInFragment"
+        android:label="SignInFragment"
+        tools:layout="@layout/fragment_signin">
+        <action
+            android:id="@+id/action_signin_to_startfragment"
+            app:destination="@+id/startfragment"
+            app:popUpTo="@id/startfragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/testfragment"
+        android:name="com.example.mawfd.TestFragment"
+        android:label="TestFragment"
+        tools:layout="@layout/fragment_test">
+        <action
+            android:id="@+id/action_test_to_startfragment"
+            app:destination="@+id/startfragment"
+            app:popUpTo="@id/startfragment"/>
+    </fragment>
 
 </navigation>
