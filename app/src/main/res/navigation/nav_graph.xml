@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/startfragment">
+    <fragment
+        android:id="@+id/startfragment"
+        android:name="com.example.mawfd.StartFrameFragment"
+        android:label="Start"
+        tools:layout="@layout/fragment_startframe"/>
+        <action
+            android:id="@+id/action_startfragment_to_signinfragment"
+            app:destination="@+id/fragment_signin"
+            />
+
+</navigation>
