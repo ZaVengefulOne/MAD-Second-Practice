@@ -8,7 +8,7 @@
         android:id="@+id/startfragment"
         android:name="com.example.mawfd.StartFrameFragment"
         android:label="Start"
-        tools:layout="@layout/fragment_startframe"/>
+        tools:layout="@layout/fragment_startframe">
         <action
             android:id="@+id/action_startfragment_to_signinfragment"
             app:destination="@+id/signinfragment"
@@ -16,6 +16,7 @@
         <action
             android:id="@+id/action_startfragment_to_testfragment"
             app:destination="@+id/testfragment"/>
+    </fragment>
     <fragment
         android:id="@+id/signinfragment"
         android:name="com.example.mawfd.SignInFragment"
