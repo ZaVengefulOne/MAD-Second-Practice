@@ -4,4 +4,6 @@
     <string name="title_name">AWFD</string>
     <string name="notification_title">Уведомление о приёме</string>
     <string name="notification_text">Приём был отменён</string>
+    <string name="service_button">Перейти в приложение</string>
+    <string name="service_text">Приём у врача был отменён. Нажмите, чтобы перейти в приложение.</string>
 </resources>

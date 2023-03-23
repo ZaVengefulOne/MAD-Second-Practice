@@ -6,12 +6,14 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 
 import android.content.Context;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,8 +26,6 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
-
-
 import com.example.mawfd.databinding.FragmentStartframeBinding;
 
 
@@ -53,6 +53,8 @@ public class StartFrameFragment extends Fragment {
 //        notificationTransfer.putExtra("notificationId", notificationId);
 //        startActivity(notificationTransfer);
         getActivity().startForegroundService(new Intent(getContext(), FirstService.class));
+        Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + getActivity().getPackageName()));
+        startActivityForResult(intent, 2);
         return binding.getRoot();
     }
 
