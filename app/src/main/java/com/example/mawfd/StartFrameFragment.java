@@ -1,8 +1,10 @@
 package com.example.mawfd;
 
+
 import android.Manifest;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -33,7 +35,7 @@ public class StartFrameFragment extends Fragment {
     public static final String KEY = "key";
     public static final String PRIKOL = "example";
     private final String CHANNEL_ID = "Channel1";
-    private final int notificationId = 1;
+    public final int notificationId = 1;
     private final int requestCode = 2;
 
     public StartFrameFragment() {
@@ -47,8 +49,11 @@ public class StartFrameFragment extends Fragment {
         Log.d(TAG, "Fragment Lifecycle = " + getLifecycle().getCurrentState().toString());
 //            Toast.makeText(getContext(), "onCreateView", Toast.LENGTH_SHORT).show();
         binding = FragmentStartframeBinding.inflate(getLayoutInflater());
+//        Intent notificationTransfer = new Intent(getContext(), FirstService.class);
+//        notificationTransfer.putExtra("notificationId", notificationId);
+//        startActivity(notificationTransfer);
+        getActivity().startForegroundService(new Intent(getContext(), FirstService.class));
         return binding.getRoot();
-
     }
 
     private void createNotificationChannel() {
