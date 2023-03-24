@@ -52,13 +52,18 @@ public class FirstService extends Service {
                 WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
                 PixelFormat.TRANSLUCENT);
         params.gravity = Gravity.TOP | Gravity.CENTER;
-        View view = (RelativeLayout) LayoutInflater.from(this).inflate(R.layout.first_service, null);
-        manager.addView(view, params);
-        manager.updateViewLayout(view, params);
-        view.findViewById(R.id.button5).setOnClickListener(new View.OnClickListener() {
+        View view1 = (RelativeLayout) LayoutInflater.from(this).inflate(R.layout.first_service, null);
+        manager.addView(view1, params);
+        manager.updateViewLayout(view1, params);
+        view1.findViewById(R.id.button5).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                manager.removeView(view1);
                 stopSelf();
+
             }
         });
     }
@@ -94,5 +99,6 @@ public class FirstService extends Service {
     @Override
     public void onDestroy() {
         super.onDestroy();
+
     }
 }

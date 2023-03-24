@@ -24,9 +24,13 @@ import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import com.example.mawfd.databinding.FragmentStartframeBinding;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class StartFrameFragment extends Fragment {
@@ -37,6 +41,7 @@ public class StartFrameFragment extends Fragment {
     private final String CHANNEL_ID = "Channel1";
     public final int notificationId = 1;
     private final int requestCode = 2;
+    public boolean isNotiGranted = false;
 
     public StartFrameFragment() {
         super(R.layout.fragment_startframe);
@@ -47,14 +52,13 @@ public class StartFrameFragment extends Fragment {
         Log.d(TAG, "OnCreateView");
         Log.d(TAG, "View Lifecycle = " + getViewLifecycleOwner().getLifecycle().getCurrentState().toString());
         Log.d(TAG, "Fragment Lifecycle = " + getLifecycle().getCurrentState().toString());
-//            Toast.makeText(getContext(), "onCreateView", Toast.LENGTH_SHORT).show();
         binding = FragmentStartframeBinding.inflate(getLayoutInflater());
-//        Intent notificationTransfer = new Intent(getContext(), FirstService.class);
-//        notificationTransfer.putExtra("notificationId", notificationId);
-//        startActivity(notificationTransfer);
-        getActivity().startForegroundService(new Intent(getContext(), FirstService.class));
-        Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + getActivity().getPackageName()));
-        startActivityForResult(intent, 2);
+
+//        if (ActivityCompat.checkSelfPermission(requireContext(), Settings.ACTION_MANAGE_OVERLAY_PERMISSION) != PackageManager.PERMISSION_GRANTED) {
+//            Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + getActivity().getPackageName()));
+//            startActivityForResult(intent, 2);
+//        }
+        getActivity().stopService(new Intent(getContext(), FirstService.class));
         return binding.getRoot();
     }
 
@@ -78,16 +82,49 @@ public class StartFrameFragment extends Fragment {
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(requireContext());
         if (ActivityCompat.checkSelfPermission(requireContext(), android.Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.POST_NOTIFICATIONS}, requestCode );
-            return;
+//            return;
         }
         notificationManager.notify(
                 notificationId, builder.build()
         );
     }
 
-        @Override
+    public void requestPermissions() {
+        ActivityCompat.requestPermissions(getActivity(),
+                new String[] {
+                        Manifest.permission.POST_NOTIFICATIONS, Manifest.permission.FOREGROUND_SERVICE
+                },
+                requestCode);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
+            if (grantResults[1] == PackageManager.PERMISSION_GRANTED){
+                createNotificationChannel();
+                isNotiGranted = true;
+            } else {
+//                binding.button4.setVisibility(View.GONE);
+                Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + getActivity().getPackageName()));
+                startActivityForResult(intent, 2);
+            }
+        } else {
+            Intent intent = new Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS, Uri.parse("package:" + getActivity().getPackageName()));
+            startActivityForResult(intent, 2);
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    @Override
         public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
-            createNotificationChannel();
+            if (ActivityCompat.checkSelfPermission(getContext(),
+                    Manifest.permission.POST_NOTIFICATIONS) !=
+                    PackageManager.PERMISSION_GRANTED | ContextCompat.checkSelfPermission(getContext(),
+                    Manifest.permission.FOREGROUND_SERVICE) !=
+                    PackageManager.PERMISSION_GRANTED)
+            {
+                requestPermissions();
+            }
             Log.d(TAG, "OnViewCreated");
             Log.d(TAG, "View Lifecycle = " + getViewLifecycleOwner().getLifecycle().getCurrentState().toString());
             Log.d(TAG, "Fragment Lifecycle = " + getLifecycle().getCurrentState().toString());
@@ -121,8 +158,15 @@ public class StartFrameFragment extends Fragment {
             binding.button3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(getContext(), "UVEDOMLENIE", Toast.LENGTH_SHORT).show();
-                    showNotification();
+                    if (isNotiGranted) {
+                        showNotification();
+                    }
+                }
+            });
+            binding.button4.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    getActivity().startForegroundService(new Intent(getContext(), FirstService.class));
                 }
             });
         }

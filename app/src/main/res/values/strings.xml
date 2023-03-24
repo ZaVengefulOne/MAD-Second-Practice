@@ -6,4 +6,5 @@
     <string name="notification_text">Приём был отменён</string>
     <string name="service_button">Перейти в приложение</string>
     <string name="service_text">Приём у врача был отменён. Нажмите, чтобы перейти в приложение.</string>
+    <string name="service_creation">Создать сервис</string>
 </resources>
