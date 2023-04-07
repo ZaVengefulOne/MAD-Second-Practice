@@ -13,4 +13,5 @@
     <string name="EntranceData">Введите свои учётные данные ниже:</string>
     <string name="Welcome">Добро пожаловать в систему AWFD!</string>
     <string name="BackToTheMainMenu">Перейти в основное меню</string>
+    <string name="AdminEntrance">Вход для администраторов</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.example.mawfd.domain;
+package com.example.mawfd.data.models;
 
 public class LoginUser {
     private final String login;
