@@ -6,7 +6,7 @@ import com.example.mawfd.data.models.LoginAdministrator;
 public class AccountsDataSource {
 
     public boolean checkLoginUserValid(LoginUser loginUser){
-        return loginUser.getLogin().equals("user") && loginUser.getPassword().equals("123");
+        return loginUser.getLogin().equals("user") && loginUser.getPassword().equals("123я");
     }
 
     public boolean checkAdminUserValid(LoginAdministrator loginAdministrator){
