@@ -6,7 +6,7 @@
     app:startDestination="@id/startfragment">
     <fragment
         android:id="@+id/startfragment"
-        android:name="com.example.mawfd.StartFrameFragment"
+        android:name="com.example.mawfd.ui.fragments.StartFrameFragment"
         android:label="Start"
         tools:layout="@layout/fragment_startframe">
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/signinfragment"
-        android:name="com.example.mawfd.SignInFragment"
+        android:name="com.example.mawfd.ui.fragments.SignInFragment"
         android:label="SignInFragment"
         tools:layout="@layout/fragment_signin">
         <action
@@ -28,8 +28,35 @@
             app:popUpTo="@id/startfragment"/>
     </fragment>
     <fragment
+        android:id="@+id/entrancefragment"
+        android:name="com.example.mawfd.ui.fragments.EntranceFragment"
+        android:label="EntranceFragment"
+        tools:layout="@layout/fragment_entrance">
+        <action
+            android:id="@+id/action_entrance_to_startfragment"
+            app:destination="@id/startfragment"
+            app:popUpTo="@id/startfragment"/>
+        <action
+            android:id="@+id/action_entrance_to_admin"
+            app:destination="@id/adminfragment">
+        </action>
+
+    </fragment>
+    <fragment
+        android:id="@+id/adminfragment"
+        android:name="com.example.mawfd.ui.fragments.AdminFragment"
+        android:label="AdminFragment"
+        tools:layout="@layout/fragment_admin"
+        >
+        <action
+            android:id="@+id/action_admin_to_startfragment"
+            app:destination="@+id/startfragment"
+            app:popUpTo="@id/startfragment"
+            ></action>
+    </fragment>
+    <fragment
         android:id="@+id/testfragment"
-        android:name="com.example.mawfd.TestFragment"
+        android:name="com.example.mawfd.ui.fragments.TestFragment"
         android:label="TestFragment"
         tools:layout="@layout/fragment_test">
         <action

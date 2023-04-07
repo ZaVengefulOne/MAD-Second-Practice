@@ -7,4 +7,10 @@
     <string name="service_button">Перейти в приложение</string>
     <string name="service_text">Приём у врача был отменён. Нажмите, чтобы перейти в приложение.</string>
     <string name="service_creation">Создать сервис</string>
+    <string name="entranceButtonText">Войти</string>
+    <string name="LoginHint">Логин</string>
+    <string name="PasswordHInt">Пароль</string>
+    <string name="EntranceData">Введите свои учётные данные ниже:</string>
+    <string name="Welcome">Добро пожаловать в систему AWFD!</string>
+    <string name="BackToTheMainMenu">Перейти в основное меню</string>
 </resources>

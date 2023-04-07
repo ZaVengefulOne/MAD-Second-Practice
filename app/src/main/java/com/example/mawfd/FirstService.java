@@ -25,19 +25,12 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.navigation.Navigation;
 
+import com.example.mawfd.ui.MainActivity;
+
 public class FirstService extends Service {
 
     private String CHANNEL_ID2 = "ServiceChannel1";
     public final int notificationId = 2;
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
-        return super.onStartCommand(intent, flags, startId);
-    }
-    @Nullable
-    @Override
-    public IBinder onBind(Intent intent) {
-        return null;
-    }
     @Override
     public void onCreate() {
         super.onCreate();
@@ -68,6 +61,15 @@ public class FirstService extends Service {
         });
     }
 
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        return super.onStartCommand(intent, flags, startId);
+    }
+    @Nullable
+    @Override
+    public IBinder onBind(Intent intent) {
+        return null;
+    }
     public void createChannel()
     {
         NotificationChannel channel1 = new NotificationChannel(
