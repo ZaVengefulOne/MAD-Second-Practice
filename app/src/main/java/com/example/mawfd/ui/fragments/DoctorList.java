@@ -15,7 +15,6 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
-import com.example.mawfd.data.models.ScheduleRecyclerItem;
 import com.example.mawfd.ui.stateholder.DoctorRecyclerAdapter;
 import com.example.mawfd.ui.stateholder.viewModels.DoctorListItemViewModel;
 import com.example.mawfd.ui.stateholder.viewModels.DoctorListViewModel;
