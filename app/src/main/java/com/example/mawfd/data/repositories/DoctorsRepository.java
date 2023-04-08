@@ -19,7 +19,7 @@ public class DoctorsRepository implements DoctorsProtocol {
     }
 
     @Override
-    public LiveData<DoctorListItem> getProfileItem(int position) {
+    public LiveData<DoctorListItem> getDoctorItem(int position) {
         return dataSource.getDoctorItem(position);
     }
 

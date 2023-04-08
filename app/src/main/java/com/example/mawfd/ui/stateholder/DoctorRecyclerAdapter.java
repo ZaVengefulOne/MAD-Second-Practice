@@ -35,8 +35,8 @@ public class DoctorRecyclerAdapter extends RecyclerView.Adapter<DoctorRecyclerAd
     @Override
     public void onBindViewHolder(@NonNull DoctorViewHolder holder, int position) {
         DoctorListItem item = items.get(position);
-        holder.textView.setText(item.getDoctorName());
-        holder.textView2.setText(item.getDoctorSpec());
+        holder.textView.setText(DoctorListItem.getDoctorName());
+        holder.textView2.setText(DoctorListItem.getDoctorSpec());
         holder.imageView.setImageResource(R.drawable.medical_59_icon_icons_com_73933);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

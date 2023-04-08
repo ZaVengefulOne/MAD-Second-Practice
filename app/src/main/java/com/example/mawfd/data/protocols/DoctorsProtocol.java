@@ -9,6 +9,6 @@ import java.util.List;
 public interface DoctorsProtocol {
     LiveData<List<DoctorListItem>> getDoctorList();
 
-    LiveData<DoctorListItem> getProfileItem(int position);
+    LiveData<DoctorListItem> getDoctorItem(int position);
 
 }

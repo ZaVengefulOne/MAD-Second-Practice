@@ -12,6 +12,6 @@ public class DoctorListItemViewModel extends ViewModel {
     public LiveData<DoctorListItem> doctorListItemLiveData;
 
     public void getDoctorListItemLiveData(int position) {
-        doctorListItemLiveData = repository.getProfileItem(position);
+        doctorListItemLiveData = repository.getDoctorItem(position);
     }
 }
