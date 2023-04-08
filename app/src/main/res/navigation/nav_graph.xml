@@ -14,8 +14,8 @@
             app:destination="@+id/signinfragment"
             />
         <action
-            android:id="@+id/action_startfragment_to_testfragment"
-            app:destination="@+id/testfragment"/>
+            android:id="@+id/action_startfragment_to_doctorlist"
+            app:destination="@+id/doctorlistfragment"/>
     </fragment>
     <fragment
         android:id="@+id/signinfragment"
@@ -54,14 +54,28 @@
             app:popUpTo="@id/startfragment" />
     </fragment>
     <fragment
-        android:id="@+id/testfragment"
-        android:name="com.example.mawfd.ui.fragments.TestFragment"
-        android:label="TestFragment"
-        tools:layout="@layout/fragment_test">
+        android:id="@+id/doctorlistfragment"
+        android:name="com.example.mawfd.ui.fragments.DoctorList"
+        android:label="DoctorList"
+        tools:layout="@layout/fragment_doctorlist">
         <action
-            android:id="@+id/action_test_to_startfragment"
+            android:id="@+id/action_doctorlist_to_startfragment"
             app:destination="@+id/startfragment"
             app:popUpTo="@id/startfragment"/>
+        <action
+            android:id="@+id/action_list_to_profile"
+            app:destination="@+id/doctorprofile"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/doctorprofile"
+        android:name="com.example.mawfd.ui.fragments.DoctorProfile"
+        android:label="DoctorProfile"
+        tools:layout="@layout/fragment_doctorprofile">
+        <action
+            android:id="@+id/action_profile_to_list"
+            app:destination="@+id/doctorlistfragment"
+            />
     </fragment>
     <fragment
         android:id="@+id/adminentrancefragment"

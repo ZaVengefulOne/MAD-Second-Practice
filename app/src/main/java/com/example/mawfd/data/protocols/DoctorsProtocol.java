@@ -7,8 +7,8 @@ import com.example.mawfd.data.models.DoctorListItem;
 import java.util.List;
 
 public interface DoctorsProtocol {
-    LiveData<List<DoctorListItem>> getUserSettingsList();
+    LiveData<List<DoctorListItem>> getDoctorList();
 
-        LiveData<DoctorListItem> getProfileItem(int position);
+    LiveData<DoctorListItem> getProfileItem(int position);
 
 }

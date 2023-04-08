@@ -14,4 +14,6 @@
     <string name="Welcome">Добро пожаловать в систему AWFD!</string>
     <string name="BackToTheMainMenu">Перейти в основное меню</string>
     <string name="AdminEntrance">Вход для администраторов</string>
+    <string name="back">Назад</string>
+    <string name="doctorslist">Список врачей</string>
 </resources>

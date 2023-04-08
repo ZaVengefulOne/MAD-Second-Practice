@@ -12,7 +12,6 @@ import androidx.navigation.Navigation;
 
 import com.example.mawfd.R;
 import com.example.mawfd.databinding.FragmentAdminBinding;
-import com.example.mawfd.databinding.FragmentTestBinding;
 
 public class AdminFragment extends Fragment {
     private FragmentAdminBinding binding;

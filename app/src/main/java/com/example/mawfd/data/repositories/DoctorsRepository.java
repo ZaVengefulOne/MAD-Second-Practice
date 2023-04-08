@@ -14,7 +14,7 @@ public class DoctorsRepository implements DoctorsProtocol {
     private final DoctorsDataSource dataSource = new DoctorsDataSource();
 
     @Override
-    public LiveData<List<DoctorListItem>> getUserSettingsList() {
+    public LiveData<List<DoctorListItem>> getDoctorList() {
         return dataSource.getDoctorList();
     }
 

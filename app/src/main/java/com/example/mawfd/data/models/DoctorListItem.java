@@ -1,25 +1,21 @@
 package com.example.mawfd.data.models;
 
 public class DoctorListItem {
-    private int doctorIcon;
-    private String doctorSpec;
-    private String doctorName;
+    private static String doctorSpec;
+    private static String doctorName;
 
     public DoctorListItem(int doctorIcon, String doctorSpec, String doctorName){
-        this.doctorIcon = doctorIcon;
         this.doctorSpec = doctorSpec;
         this.doctorName = doctorName;
     }
 
-    public int getDoctorIcon() {
-        return doctorIcon;
-    }
 
-    public String getDoctorSpec() {
+
+    public static String getDoctorSpec() {
         return doctorSpec;
     }
 
-    public String getDoctorName() {
+    public static String getDoctorName() {
         return doctorName;
     }
 }
