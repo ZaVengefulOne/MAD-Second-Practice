@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.mawfd.data.database.entity.DoctorListItem;
 import com.example.mawfd.data.database.DoctorsDataBase;
 import com.example.mawfd.data.database.dao.DoctorProfilesDao;
-import com.example.mawfd.data.database.entity.DoctorListItem;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,12 +45,14 @@ public class DoctorsDataSource {
         ));
         MutableLiveData<List<DoctorListItem>> mutableLiveData = new MutableLiveData<>();
         mutableLiveData.setValue(doctors);
-        return mutableLiveData;
+        DoctorsDataBase db = DoctorsDataBase.getDatabase(context);
+        DoctorProfilesDao doctorProfilesDao = db.doctorProfilesDao();
+        return doctorProfilesDao.getDoctorList();
     }
 
     public LiveData<DoctorListItem> getDoctorItem(int position) {
         DoctorsDataBase db = DoctorsDataBase.getDatabase(context);
-        DoctorProfilesDao profileSettingDao = db.profileSettingDao();
-        return profileSettingDao.getItem(position + 1);
+        DoctorProfilesDao doctorProfilesDao = db.doctorProfilesDao();
+        return doctorProfilesDao.getItem(position + 1);
     }
 }

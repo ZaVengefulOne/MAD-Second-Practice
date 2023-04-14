@@ -12,9 +12,9 @@ import java.util.List;
 @Dao
 public interface DoctorProfilesDao {
     @Query("SELECT * FROM doctor_profiles_table")
-    LiveData<List<DoctorListItem>> getProfileSettingList();
+    LiveData<List<DoctorListItem>> getDoctorList();
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    void insert(DoctorListItem profileSettingListItem);
+    void insert(DoctorListItem doctorListItem);
     @Query("SELECT * FROM doctor_profiles_table WHERE :id LIKE id")
     LiveData<DoctorListItem> getItem(int id);
 }

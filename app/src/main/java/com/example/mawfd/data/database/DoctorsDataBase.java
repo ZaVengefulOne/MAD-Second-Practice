@@ -13,14 +13,14 @@ import com.example.mawfd.data.database.entity.DoctorListItem;
 public abstract class DoctorsDataBase extends RoomDatabase {
     private static volatile DoctorsDataBase INSTANCE;
 
-    public abstract DoctorProfilesDao profileSettingDao();
+    public abstract DoctorProfilesDao doctorProfilesDao();
 
     public static DoctorsDataBase getDatabase(final Context context) {
         if (INSTANCE == null) {
             synchronized (DoctorsDataBase.class) {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                                    DoctorsDataBase.class, "settings_profile_database")
+                                    DoctorsDataBase.class, "doctors_profile_database")
                             .build();
                 }
             }
