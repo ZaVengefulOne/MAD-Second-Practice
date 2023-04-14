@@ -1,6 +1,8 @@
 package com.example.mawfd.data.repositories;
 
 
+import android.content.Context;
+
 import androidx.lifecycle.LiveData;
 
 import com.example.mawfd.data.protocols.DoctorsProtocol;
@@ -11,7 +13,13 @@ import java.util.List;
 
 public class DoctorsRepository implements DoctorsProtocol {
 
-    private final DoctorsDataSource dataSource = new DoctorsDataSource();
+    private final Context context;
+    private final DoctorsDataSource dataSource;
+
+    public DoctorsRepository(Context context){
+        this.context = context;
+        dataSource = new DoctorsDataSource(context);
+    }
 
     @Override
     public LiveData<List<DoctorListItem>> getDoctorList() {

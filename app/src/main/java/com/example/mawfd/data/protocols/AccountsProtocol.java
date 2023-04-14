@@ -5,7 +5,7 @@ import com.example.mawfd.data.models.LoginUser;
 
 public interface AccountsProtocol {
 
-    boolean adminLogin(LoginAdministrator loginAdministrator);
+    boolean adminLogin(LoginAdministrator loginAdministrator, boolean allowed);
 
     boolean userLogin(LoginUser loginUser);
 

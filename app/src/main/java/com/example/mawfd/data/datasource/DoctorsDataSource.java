@@ -1,14 +1,22 @@
 package com.example.mawfd.data.datasource;
 
+import android.content.Context;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import com.example.mawfd.data.database.entity.DoctorListItem;
+import com.example.mawfd.data.database.DoctorsDataBase;
+import com.example.mawfd.data.database.dao.DoctorProfilesDao;
 import com.example.mawfd.data.database.entity.DoctorListItem;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class DoctorsDataSource {
+    private final Context context;
     List<DoctorListItem> doctors = new ArrayList<>();
+    public DoctorsDataSource(Context context){
+        this.context = context;
+    }
 
     public LiveData<List<DoctorListItem>> getDoctorList() {
         doctors.add(new DoctorListItem(
@@ -41,9 +49,8 @@ public class DoctorsDataSource {
     }
 
     public LiveData<DoctorListItem> getDoctorItem(int position) {
-        getDoctorList();
-        MutableLiveData<DoctorListItem> data = new MutableLiveData<>();
-        data.setValue(doctors.get(position));
-        return data;
+        DoctorsDataBase db = DoctorsDataBase.getDatabase(context);
+        DoctorProfilesDao profileSettingDao = db.profileSettingDao();
+        return profileSettingDao.getItem(position + 1);
     }
 }
