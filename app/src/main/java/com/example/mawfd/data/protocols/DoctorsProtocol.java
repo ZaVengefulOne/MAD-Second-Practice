@@ -2,7 +2,7 @@ package com.example.mawfd.data.protocols;
 
 import androidx.lifecycle.LiveData;
 
-import com.example.mawfd.data.models.DoctorListItem;
+import com.example.mawfd.data.database.entity.DoctorListItem;
 
 import java.util.List;
 

@@ -2,7 +2,7 @@ package com.example.mawfd.data.datasource;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import com.example.mawfd.data.models.DoctorListItem;
+import com.example.mawfd.data.database.entity.DoctorListItem;
 
 import java.util.ArrayList;
 import java.util.List;

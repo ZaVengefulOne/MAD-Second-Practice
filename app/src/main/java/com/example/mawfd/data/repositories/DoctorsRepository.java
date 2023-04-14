@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData;
 
 import com.example.mawfd.data.protocols.DoctorsProtocol;
 import com.example.mawfd.data.datasource.DoctorsDataSource;
-import com.example.mawfd.data.models.DoctorListItem;
+import com.example.mawfd.data.database.entity.DoctorListItem;
 
 import java.util.List;
 

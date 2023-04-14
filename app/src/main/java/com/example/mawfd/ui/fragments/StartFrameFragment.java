@@ -7,18 +7,15 @@ import android.app.NotificationManager;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 //import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 
 //import android.content.Context;
 //import android.provider.Settings;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
@@ -26,18 +23,13 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 //import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import com.example.mawfd.FirstService;
 import com.example.mawfd.R;
-import com.example.mawfd.data.models.DoctorListItem;
 import com.example.mawfd.databinding.FragmentStartframeBinding;
-import com.example.mawfd.ui.stateholder.DoctorRecyclerAdapter;
 import com.example.mawfd.ui.stateholder.viewModels.StartFrameViewModel;
-
-import java.util.List;
 
 //import java.util.ArrayList;
 //import java.util.List;

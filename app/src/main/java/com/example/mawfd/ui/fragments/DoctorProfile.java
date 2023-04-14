@@ -13,7 +13,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import com.example.mawfd.R;
-import com.example.mawfd.data.models.DoctorListItem;
+import com.example.mawfd.data.database.entity.DoctorListItem;
 import com.example.mawfd.databinding.FragmentDoctorprofileBinding;
 import com.example.mawfd.ui.stateholder.viewModels.DoctorListItemViewModel;
 

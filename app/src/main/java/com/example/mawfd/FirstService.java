@@ -90,7 +90,7 @@ public class FirstService extends Service {
                 .setAutoCancel(true)
                 .setPriority(NotificationCompat.PRIORITY_LOW);
         Intent resultIntent = new Intent(getApplicationContext(), FirstService.class);
-        PendingIntent resultPendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, resultIntent, 0);
+        PendingIntent resultPendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, resultIntent, PendingIntent.FLAG_IMMUTABLE);
         builder.setContentIntent(resultPendingIntent);
         Notification noti = builder.build();
         return noti;

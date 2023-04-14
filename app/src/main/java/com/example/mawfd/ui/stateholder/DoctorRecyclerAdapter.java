@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mawfd.R;
-import com.example.mawfd.data.models.DoctorListItem;
+import com.example.mawfd.data.database.entity.DoctorListItem;
 
 import java.util.List;
 
