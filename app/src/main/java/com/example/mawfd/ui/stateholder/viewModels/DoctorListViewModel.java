@@ -1,5 +1,9 @@
 package com.example.mawfd.ui.stateholder.viewModels;
 
+import android.app.Application;
+
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -8,8 +12,11 @@ import com.example.mawfd.data.repositories.DoctorsRepository;
 
 import java.util.List;
 
-public class DoctorListViewModel extends ViewModel {
-    private final DoctorsRepository repository = new DoctorsRepository();
+public class DoctorListViewModel extends AndroidViewModel {
+    private final DoctorsRepository repository = new DoctorsRepository(getApplication());
     public LiveData<List<DoctorListItem>> listLiveData = repository.getDoctorList();
 
+    public DoctorListViewModel(@NonNull Application application) {
+        super(application);
+    }
 }
