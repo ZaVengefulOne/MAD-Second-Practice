@@ -7,9 +7,10 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 import com.example.mawfd.data.database.dao.DoctorProfilesDao;
-import com.example.mawfd.data.database.entity.DoctorListItem;
+import com.example.mawfd.data.database.entity.Doctor;
+import com.example.mawfd.data.models.DoctorListItem;
 
-@Database(entities = {DoctorListItem.class}, version = 1, exportSchema = false)
+@Database(entities = {Doctor.class}, version = 1, exportSchema = false)
 public abstract class DoctorsDataBase extends RoomDatabase {
     private static volatile DoctorsDataBase INSTANCE;
 

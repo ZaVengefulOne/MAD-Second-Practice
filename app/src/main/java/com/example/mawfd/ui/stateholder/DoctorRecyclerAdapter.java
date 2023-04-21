@@ -10,7 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mawfd.R;
-import com.example.mawfd.data.database.entity.DoctorListItem;
+import com.example.mawfd.data.models.DoctorListItem;
+import com.example.mawfd.databinding.FragmentDoctorprofileBinding;
 
 import java.util.List;
 
@@ -25,19 +26,19 @@ public class DoctorRecyclerAdapter extends RecyclerView.Adapter<DoctorRecyclerAd
     @NonNull
     @Override
     public DoctorViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view;
-        view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_schedule_recycler, parent, false);
-
-        return new DoctorViewHolder(view);
+        return new DoctorViewHolder(FragmentDoctorprofileBinding.inflate(
+                LayoutInflater.from(parent.getContext()),
+                parent,
+                false
+        ));
     }
 
     @Override
     public void onBindViewHolder(@NonNull DoctorViewHolder holder, int position) {
         DoctorListItem item = items.get(position);
-        holder.textView.setText(DoctorListItem.getDoctorName());
-        holder.textView2.setText(DoctorListItem.getDoctorSpec());
-        holder.imageView.setImageResource(R.drawable.medical_59_icon_icons_com_73933);
+        holder.binding.doctorName.setText(item.getDoctorName());
+        holder.binding.doctorSpec.setText(item.getDoctorSpec());
+        holder.binding.doctorLogo.setImageResource(R.drawable.medical_59_icon_icons_com_73933);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -52,15 +53,18 @@ public class DoctorRecyclerAdapter extends RecyclerView.Adapter<DoctorRecyclerAd
     }
 
     static class DoctorViewHolder extends RecyclerView.ViewHolder{
-        TextView textView;
-        TextView textView2;
-        ImageView imageView;
-        public DoctorViewHolder(@NonNull View itemView)
+//        TextView textView;
+//        TextView textView2;
+//        ImageView imageView;
+        FragmentDoctorprofileBinding binding;
+        public DoctorViewHolder(@NonNull FragmentDoctorprofileBinding binding)
         {
-        super(itemView);
-        textView = itemView.findViewById(R.id.doctorName);
-        textView2 = itemView.findViewById(R.id.doctorSpec);
-        imageView = itemView.findViewById(R.id.doctorLogo);
+//        super(itemView);
+//        textView = itemView.findViewById(R.id.doctorName);
+//        textView2 = itemView.findViewById(R.id.doctorSpec);
+//        imageView = itemView.findViewById(R.id.doctorLogo);
+            super(binding.getRoot());
+            this.binding = binding;
         }
 
     }

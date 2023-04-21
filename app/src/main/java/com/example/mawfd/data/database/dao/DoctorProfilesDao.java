@@ -6,15 +6,15 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
-import com.example.mawfd.data.database.entity.DoctorListItem;
+import com.example.mawfd.data.database.entity.Doctor;
 import java.util.List;
 
 @Dao
 public interface DoctorProfilesDao {
     @Query("SELECT * FROM doctor_profiles_table")
-    LiveData<List<DoctorListItem>> getDoctorList();
+    LiveData<List<Doctor>> getDoctorList();
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    void insert(DoctorListItem doctorListItem);
+    void insert(Doctor doctor);
     @Query("SELECT * FROM doctor_profiles_table WHERE :id LIKE id")
-    LiveData<DoctorListItem> getItem(int id);
+    LiveData<Doctor> getItem(int id);
 }

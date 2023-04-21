@@ -13,7 +13,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import com.example.mawfd.R;
-import com.example.mawfd.data.database.entity.DoctorListItem;
+import com.example.mawfd.data.models.DoctorListItem;
 import com.example.mawfd.databinding.FragmentDoctorprofileBinding;
 import com.example.mawfd.ui.stateholder.viewModels.DoctorListItemViewModel;
 
@@ -37,8 +37,8 @@ public class DoctorProfile extends Fragment {
         viewModel.doctorListItemLiveData.observe(getViewLifecycleOwner(), new Observer<DoctorListItem>() {
             @Override
             public void onChanged(DoctorListItem profileSettingListItem) {
-                binding.doctorName.setText(DoctorListItem.getDoctorName());
-                binding.doctorSpec.setText(DoctorListItem.getDoctorSpec());
+                binding.doctorName.setText(profileSettingListItem.getDoctorName());
+                binding.doctorSpec.setText(profileSettingListItem.getDoctorSpec());
                 binding.doctorLogo.setImageResource(R.drawable.medical_59_icon_icons_com_73933);
                 binding.backButton.setOnClickListener(new View.OnClickListener() {
                     @Override

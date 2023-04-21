@@ -3,31 +3,27 @@ package com.example.mawfd.data.database.entity;
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
-import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
-
 @Entity(tableName = "doctor_profiles_table")
-public class DoctorListItem {
+public class Doctor {
+
     @PrimaryKey
     @NonNull
     @ColumnInfo(name = "id")
     public Integer uid;
-    private static String doctorSpec;
-    private static String doctorName;
+    public String doctorSpec;
+    public String doctorName;
 
-
-public DoctorListItem(String doctorSpec, String doctorName){
-    this.doctorSpec = doctorSpec;
-    this.doctorName = doctorName;
-}
-
-
-    public static String getDoctorSpec() {
+    public Doctor(String doctorSpec, String doctorName) {
+        this.doctorSpec = doctorSpec;
+        this.doctorName = doctorName;
+    }
+    public String getDoctorSpec() {
         return doctorSpec;
     }
 
-    public static String getDoctorName() {
+    public String getDoctorName() {
         return doctorName;
     }
 }

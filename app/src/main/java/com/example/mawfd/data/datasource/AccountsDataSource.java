@@ -31,8 +31,10 @@ public class AccountsDataSource {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return !loginUser.getLogin().equals("") &&
-                !loginUser.getPassword().equals("");
+//        return !loginUser.getLogin().equals("") &&
+//                !loginUser.getPassword().equals("");
+        return loginUser.getLogin().equals("") &&
+                loginUser.getPassword().equals("");
     }
 
 
