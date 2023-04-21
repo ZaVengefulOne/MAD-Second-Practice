@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
+import com.example.mawfd.data.database.entity.Doctor;
 import com.example.mawfd.data.models.DoctorListItem;
 import com.example.mawfd.data.repositories.DoctorsRepository;
 
@@ -14,7 +15,7 @@ import java.util.List;
 public class StartFrameViewModel extends AndroidViewModel {
     private final DoctorsRepository repository = new DoctorsRepository(getApplication());
 
-    public LiveData<List<DoctorListItem>> listLiveData = repository.getDoctorList();
+    public LiveData<List<Doctor>> listLiveData = repository.getDoctorList();
 
     public StartFrameViewModel(@NonNull Application application) {
         super(application);

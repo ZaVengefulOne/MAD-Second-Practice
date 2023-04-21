@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.mawfd.R;
+import com.example.mawfd.data.database.entity.Doctor;
 import com.example.mawfd.data.models.DoctorListItem;
 import com.example.mawfd.databinding.FragmentDoctorlistBinding;
 
@@ -45,10 +46,10 @@ public class DoctorList extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         model = new ViewModelProvider(this).get(DoctorListViewModel.class);
 
-        model.listLiveData.observe(getViewLifecycleOwner(), new Observer<List<DoctorListItem>>() {
+        model.listLiveData.observe(getViewLifecycleOwner(), new Observer<List<Doctor>>() {
                 @SuppressLint("NotifyDataSetChanged")
                 @Override
-                public void onChanged(List<DoctorListItem> items) {
+                public void onChanged(List<Doctor> items) {
                     DoctorRecyclerAdapter adapter = new DoctorRecyclerAdapter(items);
                     Log.d("Korpalo", "DOSTAL!");
                     adapter.onDoctorListItemListener = new DoctorRecyclerAdapter.OnDoctorListClickListener() {

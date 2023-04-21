@@ -10,23 +10,25 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mawfd.R;
+import com.example.mawfd.data.database.entity.Doctor;
 import com.example.mawfd.data.models.DoctorListItem;
 import com.example.mawfd.databinding.FragmentDoctorprofileBinding;
+import com.example.mawfd.databinding.ItemScheduleRecyclerBinding;
 
 import java.util.List;
 
 public class DoctorRecyclerAdapter extends RecyclerView.Adapter<DoctorRecyclerAdapter.DoctorViewHolder> {
     public OnDoctorListClickListener onDoctorListItemListener = null;
-    private List<DoctorListItem> items;
+    private List<Doctor> items;
 
-    public DoctorRecyclerAdapter(List<DoctorListItem> items){
+    public DoctorRecyclerAdapter(List<Doctor> items){
         this.items = items;
 
     }
     @NonNull
     @Override
     public DoctorViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new DoctorViewHolder(FragmentDoctorprofileBinding.inflate(
+        return new DoctorViewHolder(ItemScheduleRecyclerBinding.inflate(
                 LayoutInflater.from(parent.getContext()),
                 parent,
                 false
@@ -35,7 +37,7 @@ public class DoctorRecyclerAdapter extends RecyclerView.Adapter<DoctorRecyclerAd
 
     @Override
     public void onBindViewHolder(@NonNull DoctorViewHolder holder, int position) {
-        DoctorListItem item = items.get(position);
+        Doctor item = items.get(position);
         holder.binding.doctorName.setText(item.getDoctorName());
         holder.binding.doctorSpec.setText(item.getDoctorSpec());
         holder.binding.doctorLogo.setImageResource(R.drawable.medical_59_icon_icons_com_73933);
@@ -56,8 +58,8 @@ public class DoctorRecyclerAdapter extends RecyclerView.Adapter<DoctorRecyclerAd
 //        TextView textView;
 //        TextView textView2;
 //        ImageView imageView;
-        FragmentDoctorprofileBinding binding;
-        public DoctorViewHolder(@NonNull FragmentDoctorprofileBinding binding)
+        ItemScheduleRecyclerBinding binding;
+        public DoctorViewHolder(@NonNull ItemScheduleRecyclerBinding binding)
         {
 //        super(itemView);
 //        textView = itemView.findViewById(R.id.doctorName);

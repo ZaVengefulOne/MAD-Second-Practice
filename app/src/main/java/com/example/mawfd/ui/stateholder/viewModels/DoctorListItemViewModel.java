@@ -7,12 +7,13 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
+import com.example.mawfd.data.database.entity.Doctor;
 import com.example.mawfd.data.models.DoctorListItem;
 import com.example.mawfd.data.repositories.DoctorsRepository;
 
 public class DoctorListItemViewModel extends AndroidViewModel {
     private DoctorsRepository repository = new DoctorsRepository(getApplication());
-    public LiveData<DoctorListItem> doctorListItemLiveData;
+    public LiveData<Doctor> doctorListItemLiveData;
 
     public DoctorListItemViewModel(@NonNull Application application) {
         super(application);

@@ -5,6 +5,7 @@ import android.content.Context;
 
 import androidx.lifecycle.LiveData;
 
+import com.example.mawfd.data.database.entity.Doctor;
 import com.example.mawfd.data.protocols.DoctorsProtocol;
 import com.example.mawfd.data.datasource.DoctorsDataSource;
 import com.example.mawfd.data.models.DoctorListItem;
@@ -22,12 +23,12 @@ public class DoctorsRepository implements DoctorsProtocol {
     }
 
     @Override
-    public LiveData<List<DoctorListItem>> getDoctorList() {
+    public LiveData<List<Doctor>> getDoctorList() {
         return dataSource.getDoctorList();
     }
 
     @Override
-    public LiveData<DoctorListItem> getDoctorItem(int position) {
+    public LiveData<Doctor> getDoctorItem(int position) {
         return dataSource.getDoctorItem(position);
     }
 

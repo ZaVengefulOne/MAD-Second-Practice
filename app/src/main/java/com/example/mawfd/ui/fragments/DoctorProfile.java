@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import com.example.mawfd.R;
+import com.example.mawfd.data.database.entity.Doctor;
 import com.example.mawfd.data.models.DoctorListItem;
 import com.example.mawfd.databinding.FragmentDoctorprofileBinding;
 import com.example.mawfd.ui.stateholder.viewModels.DoctorListItemViewModel;
@@ -34,18 +35,18 @@ public class DoctorProfile extends Fragment {
         viewModel = new ViewModelProvider(this).get(DoctorListItemViewModel.class);
         super.onViewCreated(view, savedInstanceState);
         parseArgs();
-        viewModel.doctorListItemLiveData.observe(getViewLifecycleOwner(), new Observer<DoctorListItem>() {
+        viewModel.doctorListItemLiveData.observe(getViewLifecycleOwner(), new Observer<Doctor>() {
             @Override
-            public void onChanged(DoctorListItem profileSettingListItem) {
-                binding.doctorName.setText(profileSettingListItem.getDoctorName());
-                binding.doctorSpec.setText(profileSettingListItem.getDoctorSpec());
+            public void onChanged(Doctor item) {
+                binding.doctorName.setText(item.getDoctorName());
+                binding.doctorSpec.setText(item.getDoctorSpec());
                 binding.doctorLogo.setImageResource(R.drawable.medical_59_icon_icons_com_73933);
-                binding.backButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Navigation.findNavController(view).navigate(R.id.action_profile_to_list);
-                    }
-                });
+            }
+        });
+        binding.backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(view).navigate(R.id.action_profile_to_list);
             }
         });
     }

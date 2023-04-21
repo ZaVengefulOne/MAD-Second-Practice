@@ -23,7 +23,7 @@ public class DoctorsDataSource {
         this.context = context;
     }
 
-    public LiveData<List<DoctorListItem>> getDoctorList() {
+    public LiveData<List<Doctor>> getDoctorList() {
         doctors.add(new Doctor(
                 "Терапевт",
                 "Пчёлкина Ирина Евгеньевна"
@@ -49,34 +49,34 @@ public class DoctorsDataSource {
                 "Ионова Полина Алексеевна"
         ));
 
-//        MutableLiveData<List<DoctorListItem>> mutableLiveData = new MutableLiveData<>();
-//        mutableLiveData.setValue(doctors);
+        MutableLiveData<List<Doctor>> mutableLiveData = new MutableLiveData<>();
+        mutableLiveData.setValue(doctors);
         //создать экземпляр маппера
-        DoctorsDataBase db = DoctorsDataBase.getDatabase(context);
-        DoctorProfilesDao DoctorDao = db.doctorProfilesDao();
-        Mapper mapper = new Mapper();
-        db.getQueryExecutor().execute(() -> {
-            for (Doctor doctor : doctors) {
-                DoctorDao.insert(doctor);
-            }
-        });
-        List<Doctor> listLiveData = DoctorDao.getDoctorList().getValue();
-        MutableLiveData<List<DoctorListItem>> mutableLiveData = new MutableLiveData<>();
-        if (listLiveData != null) {
-            List<DoctorListItem> listLD = mapper.mapDoctorToDoctorListItem(listLiveData);
-            mutableLiveData.setValue(listLD);
-        }
+//        DoctorsDataBase db = DoctorsDataBase.getDatabase(context);
+//        DoctorProfilesDao DoctorDao = db.doctorProfilesDao();
+//        Mapper mapper = new Mapper();
+//        db.getQueryExecutor().execute(() -> {
+//            for (Doctor doctor : doctors) {
+//                DoctorDao.insert(doctor);
+//            }
+//        });
+//        List<Doctor> listLiveData = DoctorDao.getDoctorList().getValue();
+//        MutableLiveData<List<DoctorListItem>> mutableLiveData = new MutableLiveData<>();
+//        if (listLiveData != null) {
+//            List<DoctorListItem> listLD = mapper.mapDoctorToDoctorListItem(listLiveData);
+//            mutableLiveData.setValue(listLD);
+//        }
         return mutableLiveData;
     }
 
-    public LiveData<DoctorListItem> getDoctorItem(int position) {
+    public LiveData<Doctor> getDoctorItem(int position) {
         DoctorsDataBase db = DoctorsDataBase.getDatabase(context);
         DoctorProfilesDao doctorProfilesDao = db.doctorProfilesDao();
-        MutableLiveData<DoctorListItem> liveData = new MutableLiveData<>();
+        MutableLiveData<Doctor> liveData = new MutableLiveData<>();
         LiveData<Doctor> doctorLiveData = doctorProfilesDao.getItem(position + 1);
-        if (doctorLiveData != null) {
-            liveData.setValue(Mapper.mapDoctorListItemToDoctor(doctorLiveData.getValue()));
-        }
+//        if (doctorLiveData != null) {
+//            liveData.setValue(Mapper.mapDoctorListItemToDoctor(doctorLiveData.getValue()));
+//        }
         return liveData;
     }
 }
