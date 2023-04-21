@@ -45,13 +45,12 @@ public class DoctorList extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         model = new ViewModelProvider(this).get(DoctorListViewModel.class);
-
         model.listLiveData.observe(getViewLifecycleOwner(), new Observer<List<Doctor>>() {
-                @SuppressLint("NotifyDataSetChanged")
+//                @SuppressLint("NotifyDataSetChanged")
                 @Override
                 public void onChanged(List<Doctor> items) {
                     DoctorRecyclerAdapter adapter = new DoctorRecyclerAdapter(items);
-                    Log.d("Korpalo", "DOSTAL!");
+//                    Log.d("Korpalo", "DOSTAL!");
                     adapter.onDoctorListItemListener = new DoctorRecyclerAdapter.OnDoctorListClickListener() {
                         @Override
                         public void onDoctorItemListClickListener(int position) {
@@ -63,8 +62,8 @@ public class DoctorList extends Fragment {
 
                     };
                     binding.DoctorRecycler.setAdapter(adapter);
-                    adapter.notifyDataSetChanged();
-                    binding.DoctorRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
+//                    adapter.notifyDataSetChanged();
+//                    binding.DoctorRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
                 }
             });
         binding.button.setOnClickListener(new View.OnClickListener() {

@@ -51,7 +51,7 @@ public class DoctorsDataSource {
 
         MutableLiveData<List<Doctor>> mutableLiveData = new MutableLiveData<>();
         mutableLiveData.setValue(doctors);
-        //создать экземпляр маппера
+
 //        DoctorsDataBase db = DoctorsDataBase.getDatabase(context);
 //        DoctorProfilesDao DoctorDao = db.doctorProfilesDao();
 //        Mapper mapper = new Mapper();

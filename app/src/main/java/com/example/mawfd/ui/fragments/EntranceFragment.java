@@ -1,5 +1,7 @@
 package com.example.mawfd.ui.fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +20,7 @@ import com.example.mawfd.ui.stateholder.viewModels.EntranceViewModel;
 
 public class EntranceFragment extends Fragment {
     private FragmentEntranceBinding binding;
+    private static final String SHARED_PREF_NAME = "name";
     private EntranceViewModel viewModel;
     @Nullable
     @Override
@@ -30,9 +33,24 @@ public class EntranceFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         viewModel = new ViewModelProvider(this).get(EntranceViewModel.class);
         super.onViewCreated(view, savedInstanceState);
+
+        // чтение
+        SharedPreferences sharedPrefRead =
+                requireActivity().getPreferences(Context.MODE_PRIVATE);
+        String loginSP = sharedPrefRead.getString(SHARED_PREF_NAME, "");
+        binding.LoginText.setText(loginSP);
+
         binding.enterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // запись
+                SharedPreferences sharedPrefWrite =
+                        requireActivity().getPreferences(Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPrefWrite.edit();
+                editor.putString(SHARED_PREF_NAME,
+                        binding.LoginText.getText().toString());
+                editor.apply();
+
                 if(viewModel.loginAccount(
                         binding.LoginText.getText().toString(),
                         binding.PasswordText.getText().toString()

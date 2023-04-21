@@ -18,7 +18,7 @@ public class AccountsDataSource {
     }
 
     public boolean checkLoginUserValid(LoginUser loginUser){
-        String filename = "Phone";
+        String filename = "Login";
         String fileContents = loginUser.getLogin();
         File dir = context.getFilesDir();
         File file_phone = new File(dir, filename);
