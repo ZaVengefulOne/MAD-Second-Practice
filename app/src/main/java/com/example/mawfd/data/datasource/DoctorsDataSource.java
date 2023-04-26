@@ -49,24 +49,22 @@ public class DoctorsDataSource {
                 "Ионова Полина Алексеевна"
         ));
 
-        MutableLiveData<List<Doctor>> mutableLiveData = new MutableLiveData<>();
-        mutableLiveData.setValue(doctors);
 
-//        DoctorsDataBase db = DoctorsDataBase.getDatabase(context);
-//        DoctorProfilesDao DoctorDao = db.doctorProfilesDao();
+        DoctorsDataBase db = DoctorsDataBase.getDatabase(context);
+        DoctorProfilesDao DoctorDao = db.doctorProfilesDao();
 //        Mapper mapper = new Mapper();
-//        db.getQueryExecutor().execute(() -> {
-//            for (Doctor doctor : doctors) {
-//                DoctorDao.insert(doctor);
-//            }
-//        });
-//        List<Doctor> listLiveData = DoctorDao.getDoctorList().getValue();
-//        MutableLiveData<List<DoctorListItem>> mutableLiveData = new MutableLiveData<>();
-//        if (listLiveData != null) {
-//            List<DoctorListItem> listLD = mapper.mapDoctorToDoctorListItem(listLiveData);
-//            mutableLiveData.setValue(listLD);
-//        }
-        return mutableLiveData;
+        db.getQueryExecutor().execute(() -> {
+            for (Doctor doctor : doctors) {
+                DoctorDao.insert(doctor);
+            }
+        });
+        LiveData<List<Doctor>> listLiveData = DoctorDao.getDoctorList();
+        /*MutableLiveData<List<DoctorListItem>> mutableLiveData = new MutableLiveData<>();
+        if (listLiveData != null) {
+            List<DoctorListItem> listLD = mapper.mapDoctorToDoctorListItem(listLiveData);
+            mutableLiveData.setValue(listLD);
+        }*/
+        return listLiveData;
     }
 
     public LiveData<Doctor> getDoctorItem(int position) {

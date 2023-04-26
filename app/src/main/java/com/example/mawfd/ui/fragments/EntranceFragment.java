@@ -21,6 +21,8 @@ import com.example.mawfd.ui.stateholder.viewModels.EntranceViewModel;
 public class EntranceFragment extends Fragment {
     private FragmentEntranceBinding binding;
     private static final String SHARED_PREF_NAME = "name";
+    public static final String KEYL = "login";
+    public static final String KEYP = "password";
     private EntranceViewModel viewModel;
     @Nullable
     @Override
@@ -33,7 +35,7 @@ public class EntranceFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         viewModel = new ViewModelProvider(this).get(EntranceViewModel.class);
         super.onViewCreated(view, savedInstanceState);
-
+        pars();
         // чтение
         SharedPreferences sharedPrefRead =
                 requireActivity().getPreferences(Context.MODE_PRIVATE);
@@ -65,5 +67,28 @@ public class EntranceFragment extends Fragment {
                 Navigation.findNavController(view).navigate(R.id.action_entrance_to_adminentrance);
             }
         });
+    }
+    private void pars(){
+        Bundle bundle = this.getArguments();
+        if (bundle != null){
+            if (bundle.getString(KEYL) == null) {
+                String Login = bundle.getString(KEYL);
+                String Password = bundle.getString(KEYP);
+                binding.LoginText.setText(Login);
+                binding.PasswordText.setText(Password);
+            }
+            else{
+                String Login = bundle.getString(KEYL);
+                binding.LoginText.setText(Login);
+            }
+        }
+    }
+    public static EntranceFragment newInstance(String Phone, String Password) {
+        EntranceFragment entranceFragment = new EntranceFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString(KEYL, Phone);
+        bundle.putString(KEYP, Password);
+        entranceFragment.setArguments(bundle);
+        return entranceFragment;
     }
 }

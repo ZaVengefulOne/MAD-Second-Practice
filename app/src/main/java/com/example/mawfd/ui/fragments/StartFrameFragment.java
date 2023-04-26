@@ -109,5 +109,15 @@ public class StartFrameFragment extends Fragment {
                     getActivity().startForegroundService(new Intent(getContext(), FirstService.class));
                 }
             });
+            binding.shareButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent textIntent = new Intent(Intent.ACTION_SEND);
+                    textIntent.setType("text/plain");
+                    textIntent.putExtra(Intent.EXTRA_SUBJECT, "Doctor info");
+                    textIntent.putExtra(Intent.EXTRA_TEXT, "Bla-bla-bla");
+                    requireActivity().startActivity(textIntent);
+                }
+            });
         }
     }
