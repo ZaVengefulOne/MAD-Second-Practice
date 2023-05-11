@@ -2,7 +2,9 @@ package com.example.mawfd.ui.fragments;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.drawable.AnimatedVectorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,7 +42,13 @@ public class EntranceFragment extends Fragment {
                 requireActivity().getPreferences(Context.MODE_PRIVATE);
         String loginSP = sharedPrefRead.getString(SHARED_PREF_NAME, "");
         binding.LoginText.setText(loginSP);
-
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                AnimatedVectorDrawable drawable = (AnimatedVectorDrawable) binding.animation.getDrawable();
+                drawable.start();
+            }
+        }, 2000);
         binding.enterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
