@@ -13,10 +13,18 @@
         <action
             android:id="@+id/action_startfragment_to_signinfragment"
             app:destination="@+id/signinfragment"
+            app:enterAnim="@anim/fade_in_right"
+            app:exitAnim="@anim/fade_out_left"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"
             />
         <action
             android:id="@+id/action_startfragment_to_doctorlist"
-            app:destination="@+id/doctorlistfragment"/>
+            app:destination="@+id/doctorlistfragment"
+            app:enterAnim="@anim/fade_in_right"
+            app:exitAnim="@anim/fade_out_left"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"/>
     </fragment>
     <fragment
         android:id="@+id/signinfragment"
@@ -26,7 +34,11 @@
         <action
             android:id="@+id/action_signin_to_startfragment"
             app:destination="@+id/startfragment"
-            app:popUpTo="@id/startfragment"/>
+            app:popUpTo="@id/startfragment"
+            app:enterAnim="@anim/fade_in_right"
+            app:exitAnim="@anim/fade_out_left"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"/>
     </fragment>
     <fragment
         android:id="@+id/entrancefragment"
@@ -36,10 +48,18 @@
         <action
             android:id="@+id/action_entrance_to_startfragment"
             app:destination="@id/startfragment"
-            app:popUpTo="@id/startfragment"/>
+            app:popUpTo="@id/startfragment"
+            app:enterAnim="@anim/fade_in_right"
+            app:exitAnim="@anim/fade_out_left"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"/>
         <action
             android:id="@+id/action_entrance_to_adminentrance"
-            app:destination="@id/adminentrancefragment">
+            app:destination="@id/adminentrancefragment"
+            app:enterAnim="@anim/fade_in_right"
+            app:exitAnim="@anim/fade_out_left"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out">
         </action>
 
     </fragment>
@@ -52,7 +72,11 @@
         <action
             android:id="@+id/action_admin_to_startfragment"
             app:destination="@+id/startfragment"
-            app:popUpTo="@id/startfragment" />
+            app:popUpTo="@id/startfragment"
+            app:enterAnim="@anim/fade_in_right"
+            app:exitAnim="@anim/fade_out_left"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"/>
     </fragment>
     <fragment
         android:id="@+id/doctorlistfragment"
@@ -62,10 +86,18 @@
         <action
             android:id="@+id/action_doctorlist_to_startfragment"
             app:destination="@+id/startfragment"
-            app:popUpTo="@id/startfragment"/>
+            app:popUpTo="@id/startfragment"
+            app:enterAnim="@anim/fade_in_right"
+            app:exitAnim="@anim/fade_out_left"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"/>
         <action
             android:id="@+id/action_list_to_profile"
             app:destination="@+id/doctorprofile"
+            app:enterAnim="@anim/fade_in_right"
+            app:exitAnim="@anim/fade_out_left"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"
             />
     </fragment>
     <fragment
@@ -76,6 +108,10 @@
         <action
             android:id="@+id/action_profile_to_list"
             app:destination="@+id/doctorlistfragment"
+            app:enterAnim="@anim/fade_in_right"
+            app:exitAnim="@anim/fade_out_left"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"
             />
     </fragment>
     <fragment
@@ -85,7 +121,11 @@
         tools:layout="@layout/fragment_admin_entrance">
         <action
             android:id="@+id/action_adminentrance_to_adminfragment"
-            app:destination="@+id/adminfragment" />
+            app:destination="@+id/adminfragment"
+            app:enterAnim="@anim/fade_in_right"
+            app:exitAnim="@anim/fade_out_left"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"/>
     </fragment>
 
 
