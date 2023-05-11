@@ -14,7 +14,6 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import com.example.mawfd.R;
-import com.example.mawfd.data.models.LoginUser;
 import com.example.mawfd.databinding.FragmentEntranceBinding;
 import com.example.mawfd.ui.stateholder.viewModels.EntranceViewModel;
 
