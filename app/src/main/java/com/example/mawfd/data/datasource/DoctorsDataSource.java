@@ -53,10 +53,13 @@ public class DoctorsDataSource {
         DoctorsDataBase db = DoctorsDataBase.getDatabase(context);
         DoctorProfilesDao DoctorDao = db.doctorProfilesDao();
 //        Mapper mapper = new Mapper();
-        db.getQueryExecutor().execute(() -> {
-            for (Doctor doctor : doctors) {
-                DoctorDao.insert(doctor);
+        db.getQueryExecutor().execute(new Runnable() {
+            @Override
+            public void run() {
+                for (Doctor doctor : doctors){
+                    DoctorDao.insert(doctor);
             }
+        }
         });
         LiveData<List<Doctor>> listLiveData = DoctorDao.getDoctorList();
         /*MutableLiveData<List<DoctorListItem>> mutableLiveData = new MutableLiveData<>();
