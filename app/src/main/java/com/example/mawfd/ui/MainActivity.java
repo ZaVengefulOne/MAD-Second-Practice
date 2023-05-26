@@ -6,6 +6,7 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.example.mawfd.R;
 import com.example.mawfd.ui.fragments.EntranceFragment;
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
                     bundle.putString(EntranceFragment.KEYL, textData);
                     graph.setStartDestination(R.id.adminfragment);
                     navHost.getNavController().setGraph(graph, bundle);
+
                 }
             } else {
                 graph.setStartDestination(R.id.entrancefragment);

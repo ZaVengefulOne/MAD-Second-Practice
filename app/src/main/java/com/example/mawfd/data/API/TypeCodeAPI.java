@@ -1,26 +1,21 @@
-package com.example.mawfd.data.protocols;
+package com.example.mawfd.data.API;
 
-import androidx.lifecycle.LiveData;
-
-import com.example.mawfd.data.database.entity.Doctor;
-import com.example.mawfd.data.models.DoctorListItem;
 import com.example.mawfd.data.models.PlaceholderPost;
 
 import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 
-public interface DoctorsProtocol {
-    LiveData<List<Doctor>> getDoctorList();
-
-    LiveData<Doctor> getDoctorItem(int position);
-
+public interface TypeCodeAPI {
+    @GET("posts/99")
     Call<PlaceholderPost> getPost();
 
+    @POST("posts")
     Call<PlaceholderPost> pushPost(@Body PlaceholderPost post);
 
+    @GET("posts")
     Call<List<PlaceholderPost>> getAllPosts();
-
 }

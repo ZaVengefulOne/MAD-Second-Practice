@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 
 //import android.content.Context;
 //import android.provider.Settings;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,13 +24,17 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 //import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import com.example.mawfd.FirstService;
 import com.example.mawfd.R;
+import com.example.mawfd.data.models.PlaceholderPost;
 import com.example.mawfd.databinding.FragmentStartframeBinding;
 import com.example.mawfd.ui.stateholder.viewModels.StartFrameViewModel;
+
+import java.util.List;
 
 //import java.util.ArrayList;
 //import java.util.List;
@@ -89,7 +94,28 @@ public class StartFrameFragment extends Fragment {
             model = new ViewModelProvider(this).get(StartFrameViewModel.class);
             createNotificationChannel();
             super.onViewCreated(view, savedInstanceState);
-            binding.button2.setOnClickListener(new View.OnClickListener() {
+
+        StartFrameViewModel.getPostLD().observe(getViewLifecycleOwner(), new Observer<PlaceholderPost>() {
+            @Override
+            public void onChanged(PlaceholderPost placeholderPost) {
+                Log.d("MAMA SMOTRI YA SDELAL PLACEHOLDERAPI", placeholderPost.getBody());
+            }
+        });
+        StartFrameViewModel.getPushLD().observe(getViewLifecycleOwner(), new Observer<PlaceholderPost>() {
+            @Override
+            public void onChanged(PlaceholderPost placeholderPost) {
+                binding.APIView.setText(placeholderPost.getTitle());
+                Log.d("PAPA SMOTRI YA SDELAL PLACEHOLDERAPI", placeholderPost.getTitle());
+            }
+        });
+        StartFrameViewModel.getListLD().observe(getViewLifecycleOwner(), new Observer<List<PlaceholderPost>>() {
+            @Override
+            public void onChanged(List<PlaceholderPost> placeholderPosts) {
+                Log.d("DYADYA LYONYA SMOTRI YA SDELAL PLACEHOLDERAPI", placeholderPosts.get(50).getTitle());
+            }
+        });
+
+        binding.button2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                 Navigation.findNavController(view).navigate(R.id.action_startfragment_to_doctorlist);

@@ -46,7 +46,9 @@ public class EntranceFragment extends Fragment {
             @Override
             public void run() {
                 AnimatedVectorDrawable drawable = (AnimatedVectorDrawable) binding.animation.getDrawable();
+                AnimatedVectorDrawable drawable2 = (AnimatedVectorDrawable) binding.animation2.getDrawable();
                 drawable.start();
+                drawable2.start();
             }
         }, 2000);
         binding.enterButton.setOnClickListener(new View.OnClickListener() {

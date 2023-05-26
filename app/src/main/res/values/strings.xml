@@ -16,4 +16,6 @@
     <string name="AdminEntrance">Вход для администраторов</string>
     <string name="back">Назад</string>
     <string name="doctorslist">Список врачей</string>
+    <string name="button_to_share">Button to share</string>
+    <string name="showNotification">Отобразить уведомление</string>
 </resources>

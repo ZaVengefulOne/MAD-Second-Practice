@@ -47,7 +47,7 @@
             android:id="@+id/button3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Отобразить уведомление"
+            android:text="@string/showNotification"
             android:textColor="#000000" />
 
         <Button
@@ -64,6 +64,18 @@
             android:text="@string/service_creation"
             android:textColor="#000000" />
 
+        <TextView
+            android:id="@+id/APIView"
+            android:layout_width="match_parent"
+            android:layout_height="68dp"
+            android:fontFamily="@font/aguafina_script"
+            android:textAlignment="center"
+
+            android:textColor="@color/teal_700"
+            android:textColorHighlight="@color/cyan"
+            android:textSize="34sp"
+            android:textStyle="bold|italic" />
+
     </LinearLayout>
 
     <ImageButton
@@ -76,6 +88,7 @@
         app:layout_constraintHorizontal_bias="0.036"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        android:contentDescription="@string/button_to_share" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

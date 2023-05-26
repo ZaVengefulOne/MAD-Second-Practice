@@ -52,7 +52,6 @@ public class DoctorsDataSource {
 
         DoctorsDataBase db = DoctorsDataBase.getDatabase(context);
         DoctorProfilesDao DoctorDao = db.doctorProfilesDao();
-//        Mapper mapper = new Mapper();
         db.getQueryExecutor().execute(new Runnable() {
             @Override
             public void run() {
@@ -62,11 +61,6 @@ public class DoctorsDataSource {
         }
         });
         LiveData<List<Doctor>> listLiveData = DoctorDao.getDoctorList();
-        /*MutableLiveData<List<DoctorListItem>> mutableLiveData = new MutableLiveData<>();
-        if (listLiveData != null) {
-            List<DoctorListItem> listLD = mapper.mapDoctorToDoctorListItem(listLiveData);
-            mutableLiveData.setValue(listLD);
-        }*/
         return listLiveData;
     }
 
