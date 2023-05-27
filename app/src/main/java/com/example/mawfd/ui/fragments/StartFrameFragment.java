@@ -2,6 +2,7 @@ package com.example.mawfd.ui.fragments;
 
 
 import android.Manifest;
+import android.app.Application;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Intent;
@@ -94,21 +95,20 @@ public class StartFrameFragment extends Fragment {
             model = new ViewModelProvider(this).get(StartFrameViewModel.class);
             createNotificationChannel();
             super.onViewCreated(view, savedInstanceState);
-
-        StartFrameViewModel.getPostLD().observe(getViewLifecycleOwner(), new Observer<PlaceholderPost>() {
+        model.postLD.observe(getViewLifecycleOwner(), new Observer<PlaceholderPost>() {
             @Override
             public void onChanged(PlaceholderPost placeholderPost) {
                 Log.d("MAMA SMOTRI YA SDELAL PLACEHOLDERAPI", placeholderPost.getBody());
             }
         });
-        StartFrameViewModel.getPushLD().observe(getViewLifecycleOwner(), new Observer<PlaceholderPost>() {
+        model.pushLD.observe(getViewLifecycleOwner(), new Observer<PlaceholderPost>() {
             @Override
             public void onChanged(PlaceholderPost placeholderPost) {
                 binding.APIView.setText(placeholderPost.getTitle());
                 Log.d("PAPA SMOTRI YA SDELAL PLACEHOLDERAPI", placeholderPost.getTitle());
             }
         });
-        StartFrameViewModel.getListLD().observe(getViewLifecycleOwner(), new Observer<List<PlaceholderPost>>() {
+        model.getLD.observe(getViewLifecycleOwner(), new Observer<List<PlaceholderPost>>() {
             @Override
             public void onChanged(List<PlaceholderPost> placeholderPosts) {
                 Log.d("DYADYA LYONYA SMOTRI YA SDELAL PLACEHOLDERAPI", placeholderPosts.get(50).getTitle());

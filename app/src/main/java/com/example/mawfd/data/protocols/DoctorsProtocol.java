@@ -17,10 +17,10 @@ public interface DoctorsProtocol {
 
     LiveData<Doctor> getDoctorItem(int position);
 
-    Call<PlaceholderPost> getPost();
+    LiveData<PlaceholderPost> getPost();
 
-    Call<PlaceholderPost> pushPost(@Body PlaceholderPost post);
+    LiveData<PlaceholderPost> pushPost();
 
-    Call<List<PlaceholderPost>> getAllPosts();
+    LiveData<List<PlaceholderPost>> getAllPosts();
 
 }
