@@ -7,6 +7,6 @@ public interface AccountsProtocol {
 
     boolean adminLogin(LoginAdministrator loginAdministrator, boolean allowed);
 
-    boolean userLogin(LoginUser loginUser);
+    boolean userLogin(LoginUser loginUser, boolean allowed);
 
 }

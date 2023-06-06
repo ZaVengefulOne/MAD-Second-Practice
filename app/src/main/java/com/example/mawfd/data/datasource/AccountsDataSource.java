@@ -31,7 +31,7 @@ public class AccountsDataSource {
     }
 
 
-    public boolean checkLoginUserValid(LoginUser loginUser){
+    public boolean checkLoginUserValid(LoginUser loginUser, boolean allowed){
 //        String filename = "Login";
 //        String fileContents = loginUser.getLogin();
 //        File dir = context.getFilesDir();
@@ -56,21 +56,7 @@ public class AccountsDataSource {
 
 
     public boolean checkAdminUserValid(LoginAdministrator loginAdministrator, boolean allowed){
-        if (allowed) {
-            String filename = "Key";
-            String fileContents = loginAdministrator.getPasskey();
-            File file_key = new File("/storage/emulated/0/Android/data", filename);
-            try {
-                FileOutputStream fos = new FileOutputStream(file_key);
-                BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(fos));
-                writer.write(fileContents);
-                writer.close();
-                fos.close();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
-        return !loginAdministrator.getAdmlogin().equals("") &&
-                !loginAdministrator.getPasskey().equals("");
+        return loginAdministrator.getAdmlogin().equals("admin") &&
+                loginAdministrator.getPasskey().equals("admin");
     }
 }

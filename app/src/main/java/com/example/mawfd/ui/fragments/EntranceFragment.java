@@ -1,5 +1,7 @@
 package com.example.mawfd.ui.fragments;
 
+import static androidx.core.content.PermissionChecker.checkSelfPermission;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.drawable.AnimatedVectorDrawable;
@@ -11,6 +13,8 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.PermissionChecker;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
@@ -64,16 +68,18 @@ public class EntranceFragment extends Fragment {
 
                 if(viewModel.loginAccount(
                         binding.LoginText.getText().toString(),
-                        binding.PasswordText.getText().toString()
+                        binding.PasswordText.getText().toString(),
+                        allowedPermission()
                 ))
                     Navigation.findNavController(view).navigate(R.id.action_entrance_to_startfragment);
 
-            }
-        });
-        binding.admbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_entrance_to_adminentrance);
+                if(viewModel.AdminAccount(
+                        binding.LoginText.getText().toString(),
+                        binding.PasswordText.getText().toString(),
+                        allowedPermission()
+                ))
+                    Navigation.findNavController(view).navigate(R.id.action_entrance_to_admin);
+
             }
         });
     }
@@ -90,6 +96,15 @@ public class EntranceFragment extends Fragment {
                 String Login = bundle.getString(KEYL);
                 binding.LoginText.setText(Login);
             }
+        }
+    }
+    private boolean allowedPermission() {
+        if (checkSelfPermission(requireContext(), android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                == PermissionChecker.PERMISSION_GRANTED) {
+            return true;
+        } else {
+            ActivityCompat.requestPermissions(requireActivity(), new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+            return false;
         }
     }
     public static EntranceFragment newInstance(String Phone, String Password) {

@@ -18,4 +18,10 @@
     <string name="doctorslist">Список врачей</string>
     <string name="button_to_share">Button to share</string>
     <string name="showNotification">Отобразить уведомление</string>
+    <string name="doctors">Врачи</string>
+    <string name="appointments">Приёмы</string>
+    <string name="library">Картотека</string>
+    <string name="homepage">Главная</string>
+    <string name="AddPatient">Добавить пациента</string>
+    <string name="AddAppointment">Добавить приём</string>
 </resources>

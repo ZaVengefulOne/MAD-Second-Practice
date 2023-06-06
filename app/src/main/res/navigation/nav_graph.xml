@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/startfragment"
-        android:name="com.example.mawfd.ui.fragments.StartFrameFragment"
+        android:name="com.example.mawfd.ui.fragments.MenuFragment"
         android:label="Start"
-        tools:layout="@layout/fragment_startframe">
+        tools:layout="@layout/fragment_menu">
         <action
             android:id="@+id/action_startfragment_to_signinfragment"
             app:destination="@+id/signinfragment"
@@ -21,6 +21,27 @@
         <action
             android:id="@+id/action_startfragment_to_doctorlist"
             app:destination="@+id/doctorlistfragment"
+            app:enterAnim="@anim/fade_in_right"
+            app:exitAnim="@anim/fade_out_left"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"/>
+        <action
+            android:id="@+id/action_startfragment_to_adminfragment"
+            app:destination="@+id/adminfragment"
+            app:enterAnim="@anim/fade_in_right"
+            app:exitAnim="@anim/fade_out_left"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"/>
+        <action
+            android:id="@+id/action_menu_to_library"
+            app:destination="@+id/libraryfragment"
+            app:enterAnim="@anim/fade_in_right"
+            app:exitAnim="@anim/fade_out_left"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"/>
+        <action
+            android:id="@+id/action_menu_to_appointments"
+            app:destination="@+id/appointmentfragment"
             app:enterAnim="@anim/fade_in_right"
             app:exitAnim="@anim/fade_out_left"
             app:popEnterAnim="@anim/slide_in"
@@ -54,8 +75,8 @@
             app:popEnterAnim="@anim/slide_in"
             app:popExitAnim="@anim/slide_out"/>
         <action
-            android:id="@+id/action_entrance_to_adminentrance"
-            app:destination="@id/adminentrancefragment"
+            android:id="@+id/action_entrance_to_admin"
+            app:destination="@id/adminfragment"
             app:enterAnim="@anim/fade_in_right"
             app:exitAnim="@anim/fade_out_left"
             app:popEnterAnim="@anim/slide_in"
@@ -99,6 +120,22 @@
             app:popEnterAnim="@anim/slide_in"
             app:popExitAnim="@anim/slide_out"
             />
+        <action
+            android:id="@+id/action_list_to_library"
+            app:destination="@+id/libraryfragment"
+            app:enterAnim="@anim/fade_in_right"
+            app:exitAnim="@anim/fade_out_left"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"
+            />
+        <action
+            android:id="@+id/action_list_to_appointments"
+            app:destination="@+id/appointmentfragment"
+            app:enterAnim="@anim/fade_in_right"
+            app:exitAnim="@anim/fade_out_left"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"
+            />
     </fragment>
     <fragment
         android:id="@+id/doctorprofile"
@@ -115,18 +152,58 @@
             />
     </fragment>
     <fragment
-        android:id="@+id/adminentrancefragment"
-        android:name="com.example.mawfd.ui.fragments.AdminEntranceFragment"
-        android:label="AdminEntranceFragment"
-        tools:layout="@layout/fragment_admin_entrance">
+        android:id="@+id/libraryfragment"
+        android:name="com.example.mawfd.ui.fragments.LibraryFragment"
+        android:label="LibraryFragment"
+        tools:layout="@layout/fragment_library">
         <action
-            android:id="@+id/action_adminentrance_to_adminfragment"
-            app:destination="@+id/adminfragment"
+            android:id="@+id/action_library_to_menu"
+            app:destination="@+id/startfragment"
+            app:enterAnim="@anim/fade_in_right"
+            app:exitAnim="@anim/fade_out_left"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"/>
+        <action
+            android:id="@+id/action_library_to_doctorlist"
+            app:destination="@+id/doctorlistfragment"
+            app:enterAnim="@anim/fade_in_right"
+            app:exitAnim="@anim/fade_out_left"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"/>
+        <action
+            android:id="@+id/action_library_to_appointments"
+            app:destination="@+id/appointmentfragment"
             app:enterAnim="@anim/fade_in_right"
             app:exitAnim="@anim/fade_out_left"
             app:popEnterAnim="@anim/slide_in"
             app:popExitAnim="@anim/slide_out"/>
     </fragment>
-
+    <fragment
+        android:id="@+id/appointmentfragment"
+        android:name="com.example.mawfd.ui.fragments.AppointmentFragment"
+        android:label="AppointmentFragment"
+        tools:layout="@layout/fragment_appointments">
+        <action
+            android:id="@+id/action_appointments_to_menu"
+            app:destination="@+id/startfragment"
+            app:enterAnim="@anim/fade_in_right"
+            app:exitAnim="@anim/fade_out_left"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"/>
+        <action
+            android:id="@+id/action_appointments_to_doctorlist"
+            app:destination="@+id/doctorlistfragment"
+            app:enterAnim="@anim/fade_in_right"
+            app:exitAnim="@anim/fade_out_left"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"/>
+        <action
+            android:id="@+id/action_appointments_to_library"
+            app:destination="@+id/libraryfragment"
+            app:enterAnim="@anim/fade_in_right"
+            app:exitAnim="@anim/fade_out_left"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"/>
+    </fragment>
 
 </navigation>

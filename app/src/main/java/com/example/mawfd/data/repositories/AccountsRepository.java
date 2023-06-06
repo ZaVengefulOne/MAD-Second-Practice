@@ -21,8 +21,8 @@ public class AccountsRepository implements AccountsProtocol {
     }
 
     @Override
-    public boolean userLogin(LoginUser loginUser) {
-        return dataSource.checkLoginUserValid(loginUser);
+    public boolean userLogin(LoginUser loginUser, boolean allowed) {
+        return dataSource.checkLoginUserValid(loginUser, allowed);
     }
 
 }

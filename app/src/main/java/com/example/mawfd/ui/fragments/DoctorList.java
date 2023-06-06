@@ -3,6 +3,7 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -23,6 +24,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.mawfd.ui.stateholder.DoctorRecyclerAdapter;
 import com.example.mawfd.ui.stateholder.viewModels.DoctorListItemViewModel;
 import com.example.mawfd.ui.stateholder.viewModels.DoctorListViewModel;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;
 
@@ -66,10 +68,23 @@ public class DoctorList extends Fragment {
 //                    binding.DoctorRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
                 }
             });
-        binding.button.setOnClickListener(new View.OnClickListener() {
+        binding.BottomNavigation.setSelectedItemId(R.id.navigation_item1);
+        binding.BottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_doctorlist_to_startfragment);
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.navigation_item0:
+                        Navigation.findNavController(view).navigate(R.id.action_doctorlist_to_startfragment);
+                        return true;
+                    case R.id.navigation_item2:
+                        Navigation.findNavController(view).navigate(R.id.action_list_to_appointments);
+                        return true;
+                    case R.id.navigation_item3:
+                        Navigation.findNavController(view).navigate(R.id.action_list_to_library);
+                        return true;
+                    default:
+                        return false;
+                }
             }
         });
 

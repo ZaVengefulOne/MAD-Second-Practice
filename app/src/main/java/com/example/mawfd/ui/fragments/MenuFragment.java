@@ -2,7 +2,6 @@ package com.example.mawfd.ui.fragments;
 
 
 import android.Manifest;
-import android.app.Application;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Intent;
@@ -16,6 +15,7 @@ import androidx.annotation.Nullable;
 //import android.provider.Settings;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -32,8 +32,9 @@ import androidx.navigation.Navigation;
 import com.example.mawfd.FirstService;
 import com.example.mawfd.R;
 import com.example.mawfd.data.models.PlaceholderPost;
-import com.example.mawfd.databinding.FragmentStartframeBinding;
+import com.example.mawfd.databinding.FragmentMenuBinding;
 import com.example.mawfd.ui.stateholder.viewModels.StartFrameViewModel;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;
 
@@ -41,24 +42,21 @@ import java.util.List;
 //import java.util.List;
 
 
-public class StartFrameFragment extends Fragment {
-    private StartFrameViewModel model;
-    private FragmentStartframeBinding binding;
-    private static final String TAG = "mafwd";
-//    public static final String KEY = "key";
-    public static final String PRIKOL = "example";
+public class MenuFragment extends Fragment {
+    private FragmentMenuBinding binding;
+
 
     private final String CHANNEL_ID = "Channel1";
     public final int notificationId = 1;
     //    public boolean isNotiGranted = false;
 
-    public StartFrameFragment() {
-        super(R.layout.fragment_startframe);
+    public MenuFragment() {
+        super(R.layout.fragment_menu);
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = FragmentStartframeBinding.inflate(getLayoutInflater());
+        binding = FragmentMenuBinding.inflate(getLayoutInflater());
         getActivity().stopService(new Intent(getContext(), FirstService.class));
         return binding.getRoot();
     }
@@ -92,7 +90,7 @@ public class StartFrameFragment extends Fragment {
 
     @Override
         public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
-            model = new ViewModelProvider(this).get(StartFrameViewModel.class);
+        StartFrameViewModel model = new ViewModelProvider(this).get(StartFrameViewModel.class);
             createNotificationChannel();
             super.onViewCreated(view, savedInstanceState);
         model.postLD.observe(getViewLifecycleOwner(), new Observer<PlaceholderPost>() {
@@ -111,7 +109,7 @@ public class StartFrameFragment extends Fragment {
         model.getLD.observe(getViewLifecycleOwner(), new Observer<List<PlaceholderPost>>() {
             @Override
             public void onChanged(List<PlaceholderPost> placeholderPosts) {
-                Log.d("DYADYA LYONYA SMOTRI YA SDELAL PLACEHOLDERAPI", placeholderPosts.get(50).getTitle());
+                Log.d("DYADYA LYONYA SMOTRITE YA SDELAL PLACEHOLDERAPI", placeholderPosts.get(50).getTitle());
             }
         });
 
@@ -143,6 +141,25 @@ public class StartFrameFragment extends Fragment {
                     textIntent.putExtra(Intent.EXTRA_SUBJECT, "Doctor info");
                     textIntent.putExtra(Intent.EXTRA_TEXT, "Bla-bla-bla");
                     requireActivity().startActivity(textIntent);
+                }
+            });
+            binding.BottomNavigation.setSelectedItemId(R.id.navigation_item0);
+            binding.BottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    switch (item.getItemId()) {
+                        case R.id.navigation_item1:
+                            Navigation.findNavController(view).navigate(R.id.action_startfragment_to_doctorlist);
+                            return true;
+                        case R.id.navigation_item2:
+                            Navigation.findNavController(view).navigate(R.id.action_menu_to_appointments);
+                            return true;
+                        case R.id.navigation_item3:
+                            Navigation.findNavController(view).navigate(R.id.action_menu_to_library);
+                            return true;
+                        default:
+                            return false;
+                    }
                 }
             });
         }
