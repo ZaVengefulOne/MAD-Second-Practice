@@ -19,7 +19,15 @@ public class DoctorListItemViewModel extends AndroidViewModel {
         super(application);
     }
 
-    public void getDoctorListItemLiveData(int position) {
-        doctorListItemLiveData = repository.getDoctorItem(position);
+    public void getDoctorItem(int id) {
+        doctorListItemLiveData = repository.getDoctorItem(id);
+    }
+
+    public void deleteDoctor(int id) {
+        repository.deleteDoctor(id);
+    }
+
+    public void updatePatient(int id, String doctorName, String doctorSpec){
+        repository.updateDoctor(id, doctorName, doctorSpec);
     }
 }

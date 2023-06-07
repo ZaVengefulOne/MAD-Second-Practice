@@ -17,6 +17,15 @@ public interface DoctorsProtocol {
 
     LiveData<Doctor> getDoctorItem(int position);
 
+    void addDoctor();
+    void deleteDoctor(int id);
+    void updateDoctor(
+            int id,
+            String doctorName,
+            String doctorSpec
+    );
+
+
     LiveData<PlaceholderPost> getPost();
 
     LiveData<PlaceholderPost> pushPost();

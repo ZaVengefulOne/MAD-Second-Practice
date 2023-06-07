@@ -19,4 +19,9 @@ public class DoctorListViewModel extends AndroidViewModel {
     public DoctorListViewModel(@NonNull Application application) {
         super(application);
     }
+
+    public void addPatient() {
+        repository.addDoctor();
+    }
+
 }

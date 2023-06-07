@@ -17,4 +17,13 @@ public interface DoctorProfilesDao {
     void insert(Doctor doctor);
     @Query("SELECT * FROM doctor_profiles_table WHERE :id LIKE id")
     LiveData<Doctor> getItem(int id);
+
+    @Query("DELETE FROM doctor_profiles_table WHERE :id = id")
+    void delete(int id);
+    @Query("UPDATE doctor_profiles_table SET doctorName = :doctorName, doctorSpec = :doctorSpec WHERE id = :id")
+    void update(
+            int id,
+            String doctorName,
+            String doctorSpec
+    );
 }

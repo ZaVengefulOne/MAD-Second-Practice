@@ -10,15 +10,13 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/DoctorRecycler"
-        android:layout_width="413dp"
-        android:layout_height="657dp"
-        android:layout_marginBottom="465dp"
+        android:layout_width="405dp"
+        android:layout_height="570dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toTopOf="@+id/BottomNavigation"
+        app:layout_constraintBottom_toTopOf="@+id/addDoctor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/BottomNavigation"
@@ -29,5 +27,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_navigation_menu" />
+
+    <Button
+        android:id="@+id/addDoctor"
+        android:layout_width="185dp"
+        android:layout_height="47dp"
+        android:layout_marginBottom="10dp"
+        android:text="Добавить врача"
+        app:layout_constraintBottom_toTopOf="@+id/BottomNavigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

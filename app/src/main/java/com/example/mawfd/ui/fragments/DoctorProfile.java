@@ -22,40 +22,46 @@ public class DoctorProfile extends Fragment {
 
     private FragmentDoctorprofileBinding binding;
     private DoctorListItemViewModel viewModel;
+    private DoctorProfileArgs args;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        args = DoctorProfileArgs.fromBundle(getArguments());
         binding = FragmentDoctorprofileBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        viewModel = new ViewModelProvider(this).get(DoctorListItemViewModel.class);
         super.onViewCreated(view, savedInstanceState);
-        parseArgs();
-        viewModel.doctorListItemLiveData.observe(getViewLifecycleOwner(), new Observer<Doctor>() {
-            @Override
-            public void onChanged(Doctor item) {
-                binding.doctorName.setText(item.getDoctorName());
-                binding.doctorSpec.setText(item.getDoctorSpec());
-                binding.doctorLogo.setImageResource(R.drawable.medical_59_icon_icons_com_73933);
-            }
+        viewModel = new ViewModelProvider(this).get(DoctorListItemViewModel.class);
+//        parseArgs();
+        viewModel.getDoctorItem(args.getId());
+        viewModel.doctorListItemLiveData.observe(getViewLifecycleOwner(), Doctor -> {
+            binding.doctorName.setText(Doctor.getDoctorName());
+            binding.doctorSpec.setText(Doctor.getDoctorSpec());
         });
-        binding.backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_profile_to_list);
-            }
+        binding.deleteButton.setOnClickListener(v -> {
+            viewModel.deleteDoctor(args.getId());
+            Navigation.findNavController(requireView()).navigateUp();
         });
+        binding.saveButton.setOnClickListener(v -> viewModel.updatePatient(
+                args.getId(),
+                binding.doctorName.getText().toString(),
+                binding.doctorSpec.getText().toString()
+        ));
+
+        binding.buttonBack.setOnClickListener(view1 ->
+                Navigation.findNavController(requireView()).navigate(R.id.action_profile_to_list)
+        );
     }
 
-    private void parseArgs() {
-        Bundle bundle = this.getArguments();
-        if (bundle != null) {
-            int position = bundle.getInt(DoctorList.KEY_POS);
-            viewModel.getDoctorListItemLiveData(position);
-        }
-    }
+//    private void parseArgs() {
+//        Bundle bundle = this.getArguments();
+//        if (bundle != null) {
+//            int position = bundle.getInt(DoctorList.KEY_POS);
+//            viewModel.getDoctorListItemLiveData(position);
+//        }
+//    }
 }

@@ -142,6 +142,10 @@
         android:name="com.example.mawfd.ui.fragments.DoctorProfile"
         android:label="DoctorProfile"
         tools:layout="@layout/fragment_doctorprofile">
+        <argument
+            android:name="id"
+            app:argType="integer"
+            />
         <action
             android:id="@+id/action_profile_to_list"
             app:destination="@+id/doctorlistfragment"

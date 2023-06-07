@@ -33,13 +33,34 @@ public class DoctorsRepository implements DoctorsProtocol {
 
     @Override
     public LiveData<List<Doctor>> getDoctorList() {
-        return dataSource.getDoctorList();
+        return dataSource.getDoctorsList();
     }
 
     @Override
     public LiveData<Doctor> getDoctorItem(int position) {
         return dataSource.getDoctorItem(position);
     }
+
+    @Override
+    public void addDoctor() {
+        dataSource.addDoctor();
+    }
+
+    @Override
+    public void deleteDoctor(int id) {
+        dataSource.deleteDoctor(id);
+    }
+
+    @Override
+    public void updateDoctor(
+            int id,
+            String doctorName,
+            String doctorSpec
+    ) {
+        dataSource.updateDoctor(id, doctorName, doctorSpec);
+    }
+
+
     @Override
     public LiveData<PlaceholderPost> getPost() {
         Retrofit retrofit = RetrofitFactory.getRetrofit();

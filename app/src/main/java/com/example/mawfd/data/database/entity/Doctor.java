@@ -8,21 +8,22 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "doctor_profiles_table")
 public class Doctor {
 
-    @PrimaryKey
-    @NonNull
-    @ColumnInfo(name = "id")
-    public Integer uid;
-    public String doctorSpec;
-    public String doctorName;
+    @PrimaryKey(autoGenerate = true)
+    public Integer id;
+    public String doctorSpec = "";
+    public String doctorName = "";
 
-    public Doctor(String doctorSpec, String doctorName) {
-        this.doctorSpec = doctorSpec;
-        this.doctorName = doctorName;
-    }
+//    public Doctor(String doctorSpec, String doctorName) {
+//        this.doctorSpec = doctorSpec;
+//        this.doctorName = doctorName;
+//    }
     public String getDoctorSpec() {
         return doctorSpec;
     }
 
+    public int getId() {
+        return id;
+    }
     public String getDoctorName() {
         return doctorName;
     }

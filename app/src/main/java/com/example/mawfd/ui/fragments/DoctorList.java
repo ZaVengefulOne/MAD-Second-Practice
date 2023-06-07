@@ -1,4 +1,6 @@
 package com.example.mawfd.ui.fragments;
+import static androidx.navigation.Navigation.findNavController;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -15,8 +17,10 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.mawfd.ui.adapters.DoctorRecyclerAdapter;
+import com.example.mawfd.ui.adapters.PatientAdapter;
 import com.example.mawfd.ui.stateholder.viewModels.DoctorListViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -25,6 +29,7 @@ import java.util.List;
 public class DoctorList extends Fragment {
     private DoctorListViewModel model;
     private FragmentDoctorlistBinding binding;
+    private DoctorRecyclerAdapter adapter;
     public static String KEY_POS = "pos";
 //    public DoctorList(){
 //        super(R.layout.fragment_doctorlist);
@@ -41,27 +46,11 @@ public class DoctorList extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         model = new ViewModelProvider(this).get(DoctorListViewModel.class);
-        model.listLiveData.observe(getViewLifecycleOwner(), new Observer<List<Doctor>>() {
-//                @SuppressLint("NotifyDataSetChanged")
-                @Override
-                public void onChanged(List<Doctor> items) {
-                    DoctorRecyclerAdapter adapter = new DoctorRecyclerAdapter(items);
-//                    Log.d("Korpalo", "DOSTAL!");
-                    adapter.onDoctorListItemListener = new DoctorRecyclerAdapter.OnDoctorListClickListener() {
-                        @Override
-                        public void onDoctorItemListClickListener(int position) {
-                            Bundle bundle = new Bundle();
-                            bundle.putInt(KEY_POS, position);
-                            Navigation.findNavController(requireView())
-                                    .navigate(R.id.action_list_to_profile, bundle);
-                        }
-
-                    };
-                    binding.DoctorRecycler.setAdapter(adapter);
-//                    adapter.notifyDataSetChanged();
-//                    binding.DoctorRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
-                }
-            });
+        adapter = new DoctorRecyclerAdapter(this::openProfile);
+        binding.DoctorRecycler.setAdapter(adapter);
+        binding.DoctorRecycler.setLayoutManager(new LinearLayoutManager(getActivity()));
+        model.listLiveData.observe(getViewLifecycleOwner(), adapter::setItems);
+        binding.addDoctor.setOnClickListener(v -> model.addPatient());
         binding.BottomNavigation.setSelectedItemId(R.id.navigation_item1);
         binding.BottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -90,4 +79,7 @@ public class DoctorList extends Fragment {
         binding = null;
     }
 
+    private void openProfile(int id) {
+        findNavController(requireView()).navigate(DoctorListDirections.actionListToProfile(id));
+    }
 }
