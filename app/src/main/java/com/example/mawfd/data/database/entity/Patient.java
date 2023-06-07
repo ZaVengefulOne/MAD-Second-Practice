@@ -14,14 +14,6 @@ public class Patient {
     public  String diagnosis = "";
     public  int age = 0;
 
-
-//    public Patient(int id, String name, String diagnosis, int age) {
-//        this.id = id;
-//        this.name = name;
-//        this.diagnosis = diagnosis;
-//        this.age = age;
-//    }
-
     public String getName() {
         return name;
     }

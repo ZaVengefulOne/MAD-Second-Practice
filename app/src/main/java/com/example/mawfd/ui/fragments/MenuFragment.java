@@ -113,13 +113,13 @@ public class MenuFragment extends Fragment {
             }
         });
 
-        binding.button2.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_startfragment_to_doctorlist);
-                }
+//        binding.button2.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                Navigation.findNavController(view).navigate(R.id.action_startfragment_to_doctorlist);
+//                }
 
-            });
+//            });
             binding.button3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -139,7 +139,7 @@ public class MenuFragment extends Fragment {
                     Intent textIntent = new Intent(Intent.ACTION_SEND);
                     textIntent.setType("text/plain");
                     textIntent.putExtra(Intent.EXTRA_SUBJECT, "Doctor info");
-                    textIntent.putExtra(Intent.EXTRA_TEXT, "Bla-bla-bla");
+                    textIntent.putExtra(Intent.EXTRA_TEXT, "I'm sending you all the doctors info");
                     requireActivity().startActivity(textIntent);
                 }
             });

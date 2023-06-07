@@ -36,8 +36,10 @@ public class AccountsDataSource {
         OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(UserDataWorker.class)
                 .setInputData(createInputData(loginUser.getLogin())).build();
         workManager.enqueue(workRequest);
-        return loginUser.getLogin().equals("") &&
-                loginUser.getPassword().equals("");
+        return loginUser.getLogin().equals("Vengeful") &&
+                loginUser.getPassword().equals("123456") || loginUser.getLogin().equals("Nakarat") &&
+                loginUser.getPassword().equals("Tarakan") || loginUser.getLogin().equals("Korpalo1337") &&
+                loginUser.getPassword().equals("ilovearabic") ;
     }
 
 

@@ -20,6 +20,7 @@
         android:layout_height="605dp"
         app:layout_constraintBottom_toTopOf="@+id/AddAppointmentButton"
         app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/AppointmentRecycler"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
