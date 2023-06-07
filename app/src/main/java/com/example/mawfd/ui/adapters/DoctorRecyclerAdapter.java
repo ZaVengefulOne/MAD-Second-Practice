@@ -1,18 +1,14 @@
-package com.example.mawfd.ui.stateholder;
+package com.example.mawfd.ui.adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mawfd.R;
 import com.example.mawfd.data.database.entity.Doctor;
-import com.example.mawfd.data.models.DoctorListItem;
-import com.example.mawfd.databinding.FragmentDoctorprofileBinding;
 import com.example.mawfd.databinding.ItemScheduleRecyclerBinding;
 
 import java.util.List;

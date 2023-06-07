@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
+    id 'androidx.navigation.safeargs'
 }
+
 
 android {
     namespace 'com.example.mawfd'
@@ -49,4 +51,6 @@ dependencies {
     androidTestImplementation "androidx.room:room-testing:2.5.1"
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+
+
 }

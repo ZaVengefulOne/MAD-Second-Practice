@@ -6,9 +6,9 @@
     android:layout_height="match_parent">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="405dp"
-        android:layout_height="496dp"
-        android:layout_marginBottom="98dp"
+        android:id="@+id/PatientRecycler"
+        android:layout_width="381dp"
+        android:layout_height="578dp"
         app:layout_constraintBottom_toTopOf="@+id/AddPatient"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

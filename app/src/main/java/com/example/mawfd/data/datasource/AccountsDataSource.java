@@ -1,23 +1,24 @@
 package com.example.mawfd.data.datasource;
-
 import android.content.Context;
-
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import androidx.work.Data;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
-
+import com.example.mawfd.data.database.AccountsDataBase;
+import com.example.mawfd.data.database.dao.AccountsDao;
+import com.example.mawfd.data.database.entity.Account;
 import com.example.mawfd.data.workers.UserDataWorker;
 import com.example.mawfd.data.models.LoginAdministrator;
 import com.example.mawfd.data.models.LoginUser;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AccountsDataSource {
     private final Context context;
     private final WorkManager workManager;
+
+    List<Account> accounts = new ArrayList<>();
 
     public AccountsDataSource(Context context) {
         this.context = context;
@@ -32,21 +33,6 @@ public class AccountsDataSource {
 
 
     public boolean checkLoginUserValid(LoginUser loginUser, boolean allowed){
-//        String filename = "Login";
-//        String fileContents = loginUser.getLogin();
-//        File dir = context.getFilesDir();
-//        File file_phone = new File(dir, filename);
-//        try {
-//            FileOutputStream fos = new FileOutputStream(file_phone);
-//            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(fos));
-//            writer.write(fileContents);
-//            writer.close();
-//            fos.close();
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
-//        return !loginUser.getLogin().equals("") &&
-//                !loginUser.getPassword().equals("");
         OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(UserDataWorker.class)
                 .setInputData(createInputData(loginUser.getLogin())).build();
         workManager.enqueue(workRequest);
@@ -58,5 +44,13 @@ public class AccountsDataSource {
     public boolean checkAdminUserValid(LoginAdministrator loginAdministrator, boolean allowed){
         return loginAdministrator.getAdmlogin().equals("admin") &&
                 loginAdministrator.getPasskey().equals("admin");
+    }
+
+    public LiveData<Account> getAccount(int position) {
+        AccountsDataBase db = AccountsDataBase.getDatabase(context);
+        AccountsDao accountsDao = db.accountsDao();
+        MutableLiveData<Account> liveData = new MutableLiveData<>();
+        LiveData<Account> doctorLiveData = accountsDao.getItem(position + 1);
+        return liveData;
     }
 }
